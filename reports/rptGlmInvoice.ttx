@@ -1,0 +1,36 @@
+report_id		Number		10
+cust_id			String	2	SK
+cust_name		String	30	sHOPKO
+report_start		Date		04/01/03
+report_end		Date		04/30/03
+store_no		String	60	#DS1-0018
+location		String 	60	1 E. Telecom Terrace, NC (Temple Terrace)
+invoice			String	100	WMX of Tampa / Acc#24508 Invoice #AAA-15  Date 
+:07/15/2002
+savings			Number		85.12
+savings_percent		Number		12.32
+savings_flat_fee	Number		15.75
+savings_invoice_fee	Number		19.81
+invoice_total		Number		1090.75
+amount_due		Number		235.12
+sum_savings		Number		390.23
+sum_amount_due		Number		980.29
+percent_value		Number		22.1
+store_name		String	80	The Salinas store
+store_city		String	40	Dallas
+state_id		String	2	TX
+store_number		String	20	1234
+group_name		String	30	Conventional
+period_name		String	40	December
+store_address		String	80	4235 Wild Cherry Dr
+store_invoice_total	Number		100.1231
+store_savings_invoice_fee	Number	314.212
+store_savings_flat_fee	Number		213.21
+store_savings_percent	Number		82341.33
+store_savings		Number		82234.12
+store_amount_due	Number		12312313.12
+glmrate_savings		Number		1231.12
+sum_glmrate_savings	Number		9123.13
+glm_total		Number		123213.12
+sc			String	10	XX
+extc			String	10	YYYYY

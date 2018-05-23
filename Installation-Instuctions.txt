@@ -1,0 +1,4 @@
+Troubleshooting
+1. Check that ODBC administrator can access SqlServer via TCP
+2. Check that client machine resolves server name correctly, if not use IP address in config file
+3. Check that Firewall allows access to port 1433 on SqlServer computer.

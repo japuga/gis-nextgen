@@ -1,0 +1,13 @@
+report_id		Number		10
+cust_id			String	2	SK
+cust_name		String	30	sHOPKO
+report_start		Date		04/01/03
+report_end		Date		04/30/03
+store_no		String	60	#DS1-0018
+location		String 	60	1 E. Telecom Terrace, NC (Temple Terrace)
+trash_tons		Number		100.12
+recycle_tons		Number		100.12
+store_total_tons	Number		100.12
+store_composting_tons	Number		100.12
+landfill_percent	Number		100.12
+recycle_percent		Number		100.12

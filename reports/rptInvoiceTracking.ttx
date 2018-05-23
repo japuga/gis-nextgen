@@ -1,0 +1,20 @@
+report_no		Number		100
+cust_id             	String	2	OB
+cust_name           	String	40	Outback Steak House
+report_start        	Date		02/20/03
+report_end          	Date		02/17/03
+date_range		String	40	January First Period
+store_no		String	60	#DS1-0018
+store_address          	String 	60	1 E. Telecom Terrace
+store_city_state	String	27	Carrollton, TX
+vendor           	String	60	WMX of Tampa
+vendor_phone 		String 	15	972-4177202
+eqpt_name		String	50	P 1-DUM 8yd FL
+frequency_mask		String	20	2/EOW M,T
+contract_status		String 	1	S
+comment			String 	60	Billed Monthly according to our las records from Jan04
+account_no		String	30	1010-123456
+account_mask		String 	40	1023-545887
+invoice_no          	String	30	AAA-15
+invoice_date       	String	10	02/17/03
+invoice_total		Number		1000002.25

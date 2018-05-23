@@ -1,0 +1,24 @@
+report_no		Number		100
+cust_id             	String	2	OB
+cust_name           	String	30	Outback Steak House
+report_start        	Date		02/20/03
+report_end          	Date		02/17/03
+store_no		String	60	#DS1-0018
+location            	String 	60	1 E. Telecom Terrace, NC (Temple Terrace)
+vendor           	String	60	WMX of Tampa
+account_no          	String  20	101
+invoice_no          	String	30	AAA-15
+invoice_date       	String	10	02/17/03
+amount            	Number		101.45
+taxes            	Number		10.45
+total_amount		Number		110.23
+comment			String	60	Customer do not want to pay
+sum_amount            	Number		110.90
+sum_taxes           	Number		110.90
+sum_total_amount	Number		110.90
+check_amount		Number		110.89
+check_no		Number		40201
+check_date		Date		12/21/03
+status		String	10	Draft
+store_name	String	80	ND1030
+card_auth	String	50	VISA/1020

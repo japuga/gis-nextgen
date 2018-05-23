@@ -1,0 +1,99 @@
+account			String	60	WMX of Tampa Acc#101010
+account_no          	String  20	101010
+content_desc        	String	30	Cardboard
+cust_id             	String	2	OB
+cust_name           	String	30	Outback Steak House
+eqpt_mask           	String	30	1-PKR 20yd R/O
+eqpt_seq            	Long		1000
+frequency_mask      	String	30	On call service	
+invoice			String	60	Invoice# AAA-15
+invoice_no          	String	30	AAA-15
+location            	String 	100	1 E. Telecom Terrace, NC (Temple Terrace)
+old_rate            	Number		101.45
+rate                	Number		102.45
+rate_status         	String	1	I
+report_end          	Date		02/17/03
+report_start        	Date		02/20/03
+savings             	Number		1002.34
+comment             	String	80	Overloaded in from load of equipment
+serv_desc           	String	30	Diposal Flat Rate
+serv_desc1          	String 	20	Pick Up
+serv_sum1		Number		9089.23
+serv_desc2		string	20	Repair
+serv_sum2		Number		9089.23
+serv_desc3		string	20	Repair
+serv_sum3		Number		9089.23
+serv_desc4		string	20	Repair
+serv_sum4		Number		9089.23
+serv_desc5		string	20	Repair
+serv_sum5		Number		9089.23
+serv_desc6		string	20	Repair
+serv_sum6		Number		9089.23
+serv_desc7		string	20	Repair
+serv_sum7		Number		9089.23
+serv_desc8		string	20	Repair
+serv_sum8		Number		9089.23
+serv_desc9		string	20	Repair
+serv_sum9		Number		9089.23
+serv_desc10		string	20	Repair
+serv_sum10		Number		9089.23
+serv_desc11		string	20	Repair
+serv_sum11		Number		9089.23
+serv_desc12		string	20	Repair
+serv_sum12		Number		9089.23
+serv_desc13		string	20	Repair
+serv_sum13		Number		9089.23
+serv_desc14		string	20	Repair
+serv_sum14		Number		9089.23
+serv_desc101		string	20	Taxes and other Fees
+serv_sum101		Number		9089.23
+serv_desc102		string	20	Taxes and other Fees
+serv_sum102		Number		9089.23
+serv_desc103		string	20	Taxes and other Fees
+serv_sum103		Number		9089.23
+serv_desc104		string	20	Taxes and other Fees
+serv_sum104		Number		9089.23
+serv_desc105		string	20	Taxes and other Fees
+serv_sum105		Number		9089.23
+serv_desc106		string	20	Taxes and other Fees
+serv_sum106		Number		9089.23
+serv_desc107		string	20	Taxes and other Fees
+serv_sum107		Number		9089.23
+serv_id			Long		1012
+serv_usage          	Number		3.5
+unidades		String	30	XX 1.4  1.6   3.2 JP
+store_id		Long		123
+store_no		String	60	#DS1-0018
+total_charges       	Number		1090.23
+total_savings		Number		1209.12
+total_serv		Number		100.23
+total_units         	Number		2.23
+unit_type           	String	3	Svc
+vend_name           	String	20	WMX of Tampa
+vend_seq            	Long		123
+vinvoice_date       	String	16	Date:02/17/03
+eqpt_temp		String 	1	T
+units			String	30	pp 1.4  1.6   3.2 JP
+usage			Number		10.4
+total_nonbillsavings	Number		10235.21
+contract_range	String	50		Start/End: 11/21/2006-11/22/2006
+total_savingsPercent	Number		300.23
+label_savingsPercent	String	30	Savings Percentage
+store_savings		Number		60.23
+store_name		String	80	Salinas Store
+account_mask		String	40	10-120-12
+glm_savings		Number		102.14
+contract_opening_date	String	10	05/01/2009
+contract_expiration_date	String	10	05/31/2009
+store_address		String	80	4233 Wild Cherry
+store_city		String 	40	Lewisville
+state_id		String	2	TX
+store_number		String	20	AM12313
+glm_rate		Number		321.21
+current_rate		Number		321.21
+current_glmrate_savings	Number		10231.12
+total_current_glmrate_savings	Number	1231.23
+store_current_glmrate_savings	Number	412.12
+total_glmrate_serv	Number	123.12
+total_glmrate_charges	Number 	934.97
+store_total		Number	4231.23

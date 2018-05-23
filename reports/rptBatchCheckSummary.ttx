@@ -1,0 +1,14 @@
+report_id		Number		200
+batch_id 		Number		500
+batch_date		Date		02/22/05
+cust_id			String	2	OB
+cust_name		String	40	Outback Steak house etc 123
+vend_name		String	60	Waste Management
+count_check		Number		24
+count_vendor		Number		3
+total_check_amount	Number		10020.23
+check_no		Number		114400
+check_amount		Number 		400.23
+num_invoices		Number		8
+num_zero_invoices	Number		2
+num_process_invoices	Number		10
