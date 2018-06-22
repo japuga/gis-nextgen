@@ -61,34 +61,25 @@ Friend Class frmAccess
 
             'Added port parameter
             ' "," & gGlobSettings.sDbPort & ";" & _
+            'VB6
             sStr = "User id=" & Trim(txtUser.Text) & ";" & "Password=" & Trim(txtPassword.Text) & ";" & _
                           "Server=" & Trim(cbServername.Text) & _
                           "Persist Security Info=True;" & _
                           "Connection Timeout = 30"
 
-            'Usar valor del combo-box
-            'si esta es la compu de christian (drive E) utiliza esta base de datos
-            'If ((OSdriveLetter(0) = "E") Or (OSdriveLetter(0) = "e")) Then
-            'sStr = "Data Source=" & cbServername.Text CC_DESKTOP2\CCDESKTOP  ;" & _
-            'sStr = "Data Source=" & My.Settings.dbChris & ";" & _
-            '                "Initial Catalog=GLM;" & _
-            '               "Persist Security Info=True;" & _
-            '              "MultipleActiveResultSets=True;" & _
-            '             "User ID=" & Trim(txtUser.Text) & ";" & _
-            '            "Password=" & Trim(txtPassword.Text) & ";" & "Connection Timeout = 300"
-            'Else 'si esta es la compu de javier
-            'sStr = "Data Source="& rpt1\rpt1sql  ;" & _
-            'sStr = "Data Source=" & My.Settings.dbChris & ";" & _
-            '                 "Initial Catalog=GLM;" & _
-            '                 "Persist Security Info=True;" & _
-            '                "User ID=" & Trim(txtUser.Text) & ";" & _
-            '                "Password=" & Trim(txtPassword.Text) & ";" & "Connection Timeout = 300"
-            'End If
-            sStr = "Data Source=" & cbServername.SelectedItem & ";" & _
+            'VB.NET
+            'Data Source=DESKTOP-FMPULE0;Initial Catalog=GLM;Persist Security Info=True;User ID=angela;Password=angela;Connection Timeout = 30;Trusted_Connection=true;Integrated Security=false
+            'server=192.168.1.15;Initial Catalog=GLM;Persist Security Info=True;User ID=angela;Password=angela;Connection Timeout = 30;Trusted_Connection=true;Integrated Security=false
+            sStr = "Data Source=" & cbServername.Text & ";" & _
                  "Initial Catalog=GLM;" & _
                  "Persist Security Info=True;" & _
                  "User ID=" & Trim(txtUser.Text) & ";" & _
-                 "Password=" & Trim(txtPassword.Text) & ";" & "Connection Timeout = 300"
+                 "Password=" & Trim(txtPassword.Text) & ";" & _
+                 "Connection Timeout = 30;" & _
+                 "Trusted_Connection=true;" & _
+                 "Integrated Security=false"
+
+
 
             cn.ConnectionString = sStr
             'cn.ConnectionTimeout = 300

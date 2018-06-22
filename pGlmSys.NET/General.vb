@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Module General
 
-    Public OSdriveLetter As String = "C:\DESARROLLO\JAPUGA" ' Path.GetPathRoot(My.Application.Info.DirectoryPath).ToString
+    Public OSdriveLetter As String = Path.GetPathRoot(My.Application.Info.DirectoryPath).ToString
     Public cn As SqlClient.SqlConnection
     Public bcnStatus As cnStatus
     Public Enum cnStatus
@@ -1030,7 +1030,10 @@ Module General
         'Parametrize file name
         'sLogfile = "e:\Logfile.txt"
         'OS drive letter es de la forma "C:\" o "E:\"
-        sLogfile = OSdriveLetter & "\" + Environment.UserName & "\Logfile.txt"
+
+        'sLogfile = OSdriveLetter & "\Users\" + Environment.UserName & "\Logfile.txt"
+        sLogfile = Environment.GetEnvironmentVariable("userprofile").Trim() + "\Logfile.txt"
+
         gReport.Index = 0
         gReport.name = ""
         gReport.static_Renamed = True

@@ -662,8 +662,8 @@ ErrorHandler:
 
 
         'sFile = "c:\glm\Visual Basic\Glm-System\Reports\rptGlmInvoice.rpt"
-        sFile = "C:\glm\gis-vb2013\gis-master\reports\rptGlmInvoice.rpt"
-        'sFile = get_template(sLocalReport, cbReportTemplate.Text)
+        'sFile = "C:\glm\gis-vb2013\gis-master\reports\rptGlmInvoice.rpt"
+        sFile = get_template(sLocalReport, cbReportTemplate.Text)
         Try
             'rptDoc.Load(strReportsSysPath & "rptGlmInvoice.rpt")
             rptDoc.Load(sFile)
