@@ -572,7 +572,9 @@ ErrorHandler:
 
             sWherePeriod = sWherePeriod & " AND vInvoice.period_seq IN (" & sPeriod & ")"
         ElseIf obRange.Checked Then
-            sWherePeriod = sWherePeriod & "AND vInvoice.vinvoice_date BETWEEN " & "'" & Str(dtStartDate.Value) & "' " & " AND '" & Str(dtEndDate.Value) & "'"
+            sWherePeriod = sWherePeriod & "AND vInvoice.vinvoice_date BETWEEN " & _
+                "'" & dtStartDate.Value.ToString() & "' " & _
+                " AND '" & dtEndDate.Value.ToString() & "'"
         End If
 
         'MsgBox sWherePeriod

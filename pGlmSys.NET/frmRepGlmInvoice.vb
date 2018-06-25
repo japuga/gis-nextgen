@@ -627,7 +627,16 @@ ErrorHandler:
 
         sStmt = "SELECT * " & "FROM rptGlmInvoice " & "WHERE report_id = " & Str(nReport)
 
-        sStmt = "SELECT report_id, cust_id, LTRIM(RTRIM(cust_name)), " & "report_start, report_end, store_no, location,  " & "invoice," & "savings, savings_percent, " & "savings_flat_fee, savings_invoice_fee," & "invoice_total ,amount_due, " & "sum_savings, sum_amount_due, " & "percent_value, store_name, store_city, state_id, store_number, " & "group_name, period_name, store_address, store_invoice_total, store_savings_invoice_fee, " & "store_savings_flat_fee, store_savings_percent, store_savings, store_amount_due, " & "glmrate_savings, sum_glmrate_savings, glm_total, sc, extc " & "FROM rptGlmInvoice " & "WHERE report_id = " & Str(nReport) & " ORDER BY store_no "
+        sStmt = "SELECT report_id, cust_id, LTRIM(RTRIM(cust_name)) cust_name, " & _
+            "CONVERT(varchar, report_start, 101) report_start, CONVERT(varchar, report_end, 101) report_end, " & _
+            "store_no, location,invoice," & _
+            "savings, savings_percent, " & "savings_flat_fee, savings_invoice_fee," & _
+            "invoice_total ,amount_due, " & "sum_savings, sum_amount_due, " & _
+            "percent_value, store_name, store_city, state_id, store_number, " & _
+            "group_name, period_name, store_address, store_invoice_total, store_savings_invoice_fee, " & _
+            "store_savings_flat_fee, store_savings_percent, store_savings, store_amount_due, " & _
+            "glmrate_savings, sum_glmrate_savings, glm_total, sc, extc " & _
+            "FROM rptGlmInvoice " & "WHERE report_id = " & Str(nReport) & " ORDER BY store_no "
 
 
 

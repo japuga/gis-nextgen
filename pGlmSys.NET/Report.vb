@@ -1195,7 +1195,8 @@ ErrorHandler:
     Public Sub get_ccr_map_fields()
 
         sStmt = "SELECT account, account_no, content_desc, cust_id, " & "cust_name, eqpt_mask, eqpt_seq, frequency_mask, " & _
-        "invoice, invoice_no, location, old_rate, " & "rate, rate_status, report_end, report_start, " & "savings, comment,serv_desc," & _
+        "invoice, invoice_no, location, old_rate, " & _
+        "rate, rate_status,CONVERT(varchar, report_end, 101)  report_end, CONVERT(varchar, report_start, 101) report_start, " & "savings, comment,serv_desc," & _
         "serv_desc1, serv_sum1, serv_desc2, serv_sum2, " & "serv_desc3, serv_sum3, serv_desc4, serv_sum4, " & _
         "serv_desc5, serv_sum5, serv_desc6, serv_sum6, " & "serv_desc7, serv_sum7, serv_desc8, serv_sum8, " & _
         "serv_desc9, serv_sum9, serv_desc10, serv_sum10, " & "serv_desc11, serv_sum11, serv_desc12, serv_sum12, " & _

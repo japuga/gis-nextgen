@@ -835,9 +835,18 @@ ErrorHandler:
             rptDoc.Load(sFile)
         Catch ex As Exception
             MsgBox("Err: " & ex.Message & vbCrLf & "Please install: " & "rptCostCont.rpt", MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "GLM Error")
+            Exit Function
         End Try
         'MsgBox("Report loaded OK so far after try.", MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "GLM Info")
-        rptDoc.SetDataSource(dstReport)
+
+        Try
+            rptDoc.SetDataSource(dstReport)
+        Catch ex As LoadSaveReportException
+            MsgBox("Err: " & ex.Message & vbCrLf & "Error loading report document", _
+                   MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "GLM Error")
+            Exit Function
+        End Try
+
 
         frmRepCostContSearchViewer.CrystalReportViewer1.ReportSource = rptDoc
         frmRepCostContSearchViewer.CrystalReportViewer1.Visible = True

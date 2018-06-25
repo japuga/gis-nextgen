@@ -366,7 +366,13 @@ ErrorHandler:
         '      System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         '      Exit Sub
 
-        sStmt = "SELECT report_no, cust_id, cust_name, " & "report_start, report_end, store_no, location,  " & "RTRIM(vendor) vendor, account_no , invoice_no," & "invoice_date, amount, " & "taxes, total_amount, comment, sum_amount, sum_taxes," & " sum_total_amount, check_amount, check_no, check_date, status, store_name, card_auth  " & "FROM rptBillPayment " & "WHERE report_no = " & Str(nReport) & " " & "ORDER BY cust_id, store_no, location, vendor, account_no, invoice_no "
+        sStmt = "SELECT report_no, cust_id, cust_name, " & _
+            "CONVERT(varchar, report_start, 101) report_start, CONVERT(varchar, report_end, 101) report_end, store_no, location,  " & _
+            "RTRIM(vendor) vendor, account_no , invoice_no," & "invoice_date, amount, " & _
+            "taxes, total_amount, comment, sum_amount, sum_taxes," & _
+            " sum_total_amount, check_amount, check_no, check_date, status, store_name, card_auth  " & _
+            "FROM rptBillPayment " & "WHERE report_no = " & Str(nReport) & " " & _
+            "ORDER BY cust_id, store_no, location, vendor, account_no, invoice_no "
 
         rsReport = getDataTable(sStmt) '.Open(sStmt, cn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockReadOnly)
 

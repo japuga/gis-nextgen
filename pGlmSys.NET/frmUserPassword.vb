@@ -76,8 +76,10 @@ Friend Class frmUserPassword
 	
 	Private Sub init_vars()
 		'UPGRADE_WARNING: TextBox property txtPassword.MaxLength has a new behavior. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'
-		txtPassword.Maxlength = 10
+        txtPassword.Text = ""
+        txtPassword.MaxLength = 10
 		'UPGRADE_WARNING: TextBox property txtConfirm.MaxLength has a new behavior. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'
-		txtConfirm.Maxlength = 10
+        txtConfirm.Text = ""
+        txtConfirm.MaxLength = 10
 	End Sub
 End Class
