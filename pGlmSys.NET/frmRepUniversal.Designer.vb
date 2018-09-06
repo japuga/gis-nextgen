@@ -113,155 +113,155 @@
 	'It can be modified using the Windows Form Designer.
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me._frCriteria_3 = New System.Windows.Forms.GroupBox
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView
-        Me.DataGridView4 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.dgSelContent = New System.Windows.Forms.DataGridView
-        Me.dgContent = New System.Windows.Forms.DataGridView
-        Me.cmdAllRightContent = New System.Windows.Forms.Button
-        Me.cmdRightContent = New System.Windows.Forms.Button
-        Me.cmdLeftContent = New System.Windows.Forms.Button
-        Me.cmdAllLeftContent = New System.Windows.Forms.Button
-        Me._lbTitle_3 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me._frCriteria_2 = New System.Windows.Forms.GroupBox
-        Me.dgSelEquipment = New System.Windows.Forms.DataGridView
-        Me.dgEquipment = New System.Windows.Forms.DataGridView
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Frame2 = New System.Windows.Forms.GroupBox
-        Me._obEquipment_2 = New System.Windows.Forms.RadioButton
-        Me._obEquipment_1 = New System.Windows.Forms.RadioButton
-        Me._obEquipment_0 = New System.Windows.Forms.RadioButton
-        Me.cmdAllLeftEquipment = New System.Windows.Forms.Button
-        Me.cmdLeftEquipment = New System.Windows.Forms.Button
-        Me.cmdRightEquipment = New System.Windows.Forms.Button
-        Me.cmdAllRightEquipment = New System.Windows.Forms.Button
-        Me._lbTitle_2 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me._frCriteria_0 = New System.Windows.Forms.GroupBox
-        Me.cbInvoiceEqpt = New System.Windows.Forms.CheckBox
-        Me.cbWithoutEqpt = New System.Windows.Forms.CheckBox
-        Me.cbReportTemplate = New System.Windows.Forms.ComboBox
-        Me.txtReportTitle = New System.Windows.Forms.TextBox
-        Me.cbCustId = New System.Windows.Forms.ComboBox
-        Me.txtReportCaption = New System.Windows.Forms.TextBox
-        Me.cbCustName = New System.Windows.Forms.ComboBox
-        Me.cbGroupName = New System.Windows.Forms.ComboBox
-        Me.cbStateId = New System.Windows.Forms.ComboBox
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me._lbTitle_0 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cmdFinish = New System.Windows.Forms.Button
-        Me.cmdNext = New System.Windows.Forms.Button
-        Me.cmdPrev = New System.Windows.Forms.Button
-        Me.cmdClose = New System.Windows.Forms.Button
-        Me.sb = New System.Windows.Forms.StatusStrip
-        Me._sb_Panel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me._frCriteria_1 = New System.Windows.Forms.GroupBox
-        Me.Frame1 = New System.Windows.Forms.GroupBox
-        Me.dtEndDate = New System.Windows.Forms.DateTimePicker
-        Me.dtStartDate = New System.Windows.Forms.DateTimePicker
-        Me.cbPeriodName = New System.Windows.Forms.ComboBox
-        Me.obSinglePeriod = New System.Windows.Forms.RadioButton
-        Me.obRangePeriod = New System.Windows.Forms.RadioButton
-        Me.cbPeriodStart = New System.Windows.Forms.ComboBox
-        Me.cbPeriodEnd = New System.Windows.Forms.ComboBox
-        Me.obRange = New System.Windows.Forms.RadioButton
-        Me.Frame3 = New System.Windows.Forms.GroupBox
-        Me.obPeriodNameSingle = New System.Windows.Forms.RadioButton
-        Me.obPeriodDateSingle = New System.Windows.Forms.RadioButton
-        Me.Frame4 = New System.Windows.Forms.GroupBox
-        Me.obPeriodDateRange = New System.Windows.Forms.RadioButton
-        Me.obPeriodNameRange = New System.Windows.Forms.RadioButton
-        Me.lbPeriodEndDate = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.lbPeriodStartDate = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.lbEndDate = New System.Windows.Forms.Label
-        Me.lbStartDate = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me._lbTitle_1 = New System.Windows.Forms.Label
-        Me._frCriteria_6 = New System.Windows.Forms.GroupBox
-        Me.dgSelVendor = New System.Windows.Forms.DataGridView
-        Me.dgVendor = New System.Windows.Forms.DataGridView
-        Me.cmdAllLeftVendor = New System.Windows.Forms.Button
-        Me.cmdLeftVendor = New System.Windows.Forms.Button
-        Me.cmdRightVendor = New System.Windows.Forms.Button
-        Me.cmdAllRightVendor = New System.Windows.Forms.Button
-        Me.Label17 = New System.Windows.Forms.Label
-        Me._lbTitle_6 = New System.Windows.Forms.Label
-        Me._frCriteria_5 = New System.Windows.Forms.GroupBox
-        Me.dgSelService = New System.Windows.Forms.DataGridView
-        Me.dgService = New System.Windows.Forms.DataGridView
-        Me.cmdAllLeftServ = New System.Windows.Forms.Button
-        Me.cmdLeftServ = New System.Windows.Forms.Button
-        Me.cmdRightServ = New System.Windows.Forms.Button
-        Me.cmdAllRightServ = New System.Windows.Forms.Button
-        Me.Label16 = New System.Windows.Forms.Label
-        Me._lbTitle_5 = New System.Windows.Forms.Label
-        Me._frCriteria_4 = New System.Windows.Forms.GroupBox
-        Me.dgSelLoad = New System.Windows.Forms.DataGridView
-        Me.dgLoad = New System.Windows.Forms.DataGridView
-        Me.cmdAllLeftLoad = New System.Windows.Forms.Button
-        Me.cmdLeftLoad = New System.Windows.Forms.Button
-        Me.cmdRightLoad = New System.Windows.Forms.Button
-        Me.cmdAllRightLoad = New System.Windows.Forms.Button
-        Me.Label15 = New System.Windows.Forms.Label
-        Me._lbTitle_4 = New System.Windows.Forms.Label
+        Me._frCriteria_3 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSelContent = New System.Windows.Forms.DataGridView()
+        Me.dgContent = New System.Windows.Forms.DataGridView()
+        Me.cmdAllRightContent = New System.Windows.Forms.Button()
+        Me.cmdRightContent = New System.Windows.Forms.Button()
+        Me.cmdLeftContent = New System.Windows.Forms.Button()
+        Me.cmdAllLeftContent = New System.Windows.Forms.Button()
+        Me._lbTitle_3 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me._frCriteria_2 = New System.Windows.Forms.GroupBox()
+        Me.dgSelEquipment = New System.Windows.Forms.DataGridView()
+        Me.dgEquipment = New System.Windows.Forms.DataGridView()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Frame2 = New System.Windows.Forms.GroupBox()
+        Me._obEquipment_2 = New System.Windows.Forms.RadioButton()
+        Me._obEquipment_1 = New System.Windows.Forms.RadioButton()
+        Me._obEquipment_0 = New System.Windows.Forms.RadioButton()
+        Me.cmdAllLeftEquipment = New System.Windows.Forms.Button()
+        Me.cmdLeftEquipment = New System.Windows.Forms.Button()
+        Me.cmdRightEquipment = New System.Windows.Forms.Button()
+        Me.cmdAllRightEquipment = New System.Windows.Forms.Button()
+        Me._lbTitle_2 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me._frCriteria_0 = New System.Windows.Forms.GroupBox()
+        Me.cbInvoiceEqpt = New System.Windows.Forms.CheckBox()
+        Me.cbWithoutEqpt = New System.Windows.Forms.CheckBox()
+        Me.cbReportTemplate = New System.Windows.Forms.ComboBox()
+        Me.txtReportTitle = New System.Windows.Forms.TextBox()
+        Me.cbCustId = New System.Windows.Forms.ComboBox()
+        Me.txtReportCaption = New System.Windows.Forms.TextBox()
+        Me.cbCustName = New System.Windows.Forms.ComboBox()
+        Me.cbGroupName = New System.Windows.Forms.ComboBox()
+        Me.cbStateId = New System.Windows.Forms.ComboBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me._lbTitle_0 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmdFinish = New System.Windows.Forms.Button()
+        Me.cmdNext = New System.Windows.Forms.Button()
+        Me.cmdPrev = New System.Windows.Forms.Button()
+        Me.cmdClose = New System.Windows.Forms.Button()
+        Me.sb = New System.Windows.Forms.StatusStrip()
+        Me._sb_Panel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me._frCriteria_1 = New System.Windows.Forms.GroupBox()
+        Me.Frame1 = New System.Windows.Forms.GroupBox()
+        Me.dtEndDate = New System.Windows.Forms.DateTimePicker()
+        Me.dtStartDate = New System.Windows.Forms.DateTimePicker()
+        Me.cbPeriodName = New System.Windows.Forms.ComboBox()
+        Me.obSinglePeriod = New System.Windows.Forms.RadioButton()
+        Me.obRangePeriod = New System.Windows.Forms.RadioButton()
+        Me.cbPeriodStart = New System.Windows.Forms.ComboBox()
+        Me.cbPeriodEnd = New System.Windows.Forms.ComboBox()
+        Me.obRange = New System.Windows.Forms.RadioButton()
+        Me.Frame3 = New System.Windows.Forms.GroupBox()
+        Me.obPeriodNameSingle = New System.Windows.Forms.RadioButton()
+        Me.obPeriodDateSingle = New System.Windows.Forms.RadioButton()
+        Me.Frame4 = New System.Windows.Forms.GroupBox()
+        Me.obPeriodDateRange = New System.Windows.Forms.RadioButton()
+        Me.obPeriodNameRange = New System.Windows.Forms.RadioButton()
+        Me.lbPeriodEndDate = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lbPeriodStartDate = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lbEndDate = New System.Windows.Forms.Label()
+        Me.lbStartDate = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me._lbTitle_1 = New System.Windows.Forms.Label()
+        Me._frCriteria_6 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView10 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView9 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSelVendor = New System.Windows.Forms.DataGridView()
+        Me.dgVendor = New System.Windows.Forms.DataGridView()
+        Me.cmdAllLeftVendor = New System.Windows.Forms.Button()
+        Me.cmdLeftVendor = New System.Windows.Forms.Button()
+        Me.cmdRightVendor = New System.Windows.Forms.Button()
+        Me.cmdAllRightVendor = New System.Windows.Forms.Button()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me._lbTitle_6 = New System.Windows.Forms.Label()
+        Me._frCriteria_5 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView8 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView7 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSelService = New System.Windows.Forms.DataGridView()
+        Me.dgService = New System.Windows.Forms.DataGridView()
+        Me.cmdAllLeftServ = New System.Windows.Forms.Button()
+        Me.cmdLeftServ = New System.Windows.Forms.Button()
+        Me.cmdRightServ = New System.Windows.Forms.Button()
+        Me.cmdAllRightServ = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me._lbTitle_5 = New System.Windows.Forms.Label()
+        Me._frCriteria_4 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView6 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView5 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSelLoad = New System.Windows.Forms.DataGridView()
+        Me.dgLoad = New System.Windows.Forms.DataGridView()
+        Me.cmdAllLeftLoad = New System.Windows.Forms.Button()
+        Me.cmdLeftLoad = New System.Windows.Forms.Button()
+        Me.cmdRightLoad = New System.Windows.Forms.Button()
+        Me.cmdAllRightLoad = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me._lbTitle_4 = New System.Windows.Forms.Label()
         Me.frCriteria = New Microsoft.VisualBasic.Compatibility.VB6.GroupBoxArray(Me.components)
         Me.lbTitle = New Microsoft.VisualBasic.Compatibility.VB6.LabelArray(Me.components)
         Me.obEquipment = New Microsoft.VisualBasic.Compatibility.VB6.RadioButtonArray(Me.components)
-        Me.dgDebug = New System.Windows.Forms.DataGridView
-        Me.DataGridView5 = New System.Windows.Forms.DataGridView
-        Me.DataGridView6 = New System.Windows.Forms.DataGridView
-        Me.DataGridView7 = New System.Windows.Forms.DataGridView
-        Me.DataGridView9 = New System.Windows.Forms.DataGridView
-        Me.DataGridView10 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridView8 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.dgDebug = New System.Windows.Forms.DataGridView()
         Me._frCriteria_3.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -280,24 +280,24 @@
         Me.Frame3.SuspendLayout()
         Me.Frame4.SuspendLayout()
         Me._frCriteria_6.SuspendLayout()
+        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSelVendor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgVendor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me._frCriteria_5.SuspendLayout()
+        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSelService, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgService, System.ComponentModel.ISupportInitialize).BeginInit()
         Me._frCriteria_4.SuspendLayout()
+        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSelLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frCriteria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbTitle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.obEquipment, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgDebug, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         '_frCriteria_3
@@ -350,6 +350,13 @@
         Me.DataGridView3.RowHeadersVisible = False
         Me.DataGridView3.Size = New System.Drawing.Size(169, 19)
         Me.DataGridView3.TabIndex = 40
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Contents"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
         'DataGridView4
         '
@@ -816,7 +823,7 @@
         Me.cbReportTemplate.Location = New System.Drawing.Point(112, 181)
         Me.cbReportTemplate.Name = "cbReportTemplate"
         Me.cbReportTemplate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbReportTemplate.Size = New System.Drawing.Size(145, 22)
+        Me.cbReportTemplate.Size = New System.Drawing.Size(145, 26)
         Me.cbReportTemplate.TabIndex = 68
         '
         'txtReportTitle
@@ -830,7 +837,7 @@
         Me.txtReportTitle.MaxLength = 0
         Me.txtReportTitle.Name = "txtReportTitle"
         Me.txtReportTitle.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtReportTitle.Size = New System.Drawing.Size(249, 20)
+        Me.txtReportTitle.Size = New System.Drawing.Size(249, 26)
         Me.txtReportTitle.TabIndex = 65
         '
         'cbCustId
@@ -843,7 +850,7 @@
         Me.cbCustId.Location = New System.Drawing.Point(296, 80)
         Me.cbCustId.Name = "cbCustId"
         Me.cbCustId.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbCustId.Size = New System.Drawing.Size(65, 22)
+        Me.cbCustId.Size = New System.Drawing.Size(65, 26)
         Me.cbCustId.TabIndex = 12
         Me.cbCustId.Visible = False
         '
@@ -858,7 +865,7 @@
         Me.txtReportCaption.MaxLength = 0
         Me.txtReportCaption.Name = "txtReportCaption"
         Me.txtReportCaption.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtReportCaption.Size = New System.Drawing.Size(249, 20)
+        Me.txtReportCaption.Size = New System.Drawing.Size(249, 26)
         Me.txtReportCaption.TabIndex = 8
         '
         'cbCustName
@@ -871,7 +878,7 @@
         Me.cbCustName.Location = New System.Drawing.Point(112, 80)
         Me.cbCustName.Name = "cbCustName"
         Me.cbCustName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbCustName.Size = New System.Drawing.Size(161, 22)
+        Me.cbCustName.Size = New System.Drawing.Size(161, 26)
         Me.cbCustName.TabIndex = 7
         '
         'cbGroupName
@@ -884,7 +891,7 @@
         Me.cbGroupName.Location = New System.Drawing.Point(112, 147)
         Me.cbGroupName.Name = "cbGroupName"
         Me.cbGroupName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbGroupName.Size = New System.Drawing.Size(137, 22)
+        Me.cbGroupName.Size = New System.Drawing.Size(137, 26)
         Me.cbGroupName.TabIndex = 6
         '
         'cbStateId
@@ -897,7 +904,7 @@
         Me.cbStateId.Location = New System.Drawing.Point(112, 114)
         Me.cbStateId.Name = "cbStateId"
         Me.cbStateId.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbStateId.Size = New System.Drawing.Size(73, 22)
+        Me.cbStateId.Size = New System.Drawing.Size(73, 26)
         Me.cbStateId.TabIndex = 5
         '
         'Label19
@@ -1051,6 +1058,7 @@
         'sb
         '
         Me.sb.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sb.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.sb.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me._sb_Panel1})
         Me.sb.Location = New System.Drawing.Point(0, 1029)
         Me.sb.Name = "sb"
@@ -1061,8 +1069,8 @@
         '
         Me._sb_Panel1.AutoSize = False
         Me._sb_Panel1.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me._sb_Panel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter
         Me._sb_Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me._sb_Panel1.Name = "_sb_Panel1"
@@ -1115,7 +1123,7 @@
         Me.Frame1.Location = New System.Drawing.Point(16, 72)
         Me.Frame1.Name = "Frame1"
         Me.Frame1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Frame1.Size = New System.Drawing.Size(417, 345)
+        Me.Frame1.Size = New System.Drawing.Size(417, 350)
         Me.Frame1.TabIndex = 70
         Me.Frame1.TabStop = False
         Me.Frame1.Text = "Period/Date Range"
@@ -1123,17 +1131,17 @@
         'dtEndDate
         '
         Me.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtEndDate.Location = New System.Drawing.Point(103, 312)
+        Me.dtEndDate.Location = New System.Drawing.Point(187, 307)
         Me.dtEndDate.Name = "dtEndDate"
-        Me.dtEndDate.Size = New System.Drawing.Size(106, 20)
+        Me.dtEndDate.Size = New System.Drawing.Size(106, 26)
         Me.dtEndDate.TabIndex = 98
         '
         'dtStartDate
         '
         Me.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtStartDate.Location = New System.Drawing.Point(104, 288)
+        Me.dtStartDate.Location = New System.Drawing.Point(187, 282)
         Me.dtStartDate.Name = "dtStartDate"
-        Me.dtStartDate.Size = New System.Drawing.Size(105, 20)
+        Me.dtStartDate.Size = New System.Drawing.Size(105, 26)
         Me.dtStartDate.TabIndex = 97
         '
         'cbPeriodName
@@ -1146,7 +1154,7 @@
         Me.cbPeriodName.Location = New System.Drawing.Point(128, 32)
         Me.cbPeriodName.Name = "cbPeriodName"
         Me.cbPeriodName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbPeriodName.Size = New System.Drawing.Size(177, 22)
+        Me.cbPeriodName.Size = New System.Drawing.Size(177, 26)
         Me.cbPeriodName.TabIndex = 82
         '
         'obSinglePeriod
@@ -1189,7 +1197,7 @@
         Me.cbPeriodStart.Location = New System.Drawing.Point(88, 152)
         Me.cbPeriodStart.Name = "cbPeriodStart"
         Me.cbPeriodStart.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbPeriodStart.Size = New System.Drawing.Size(129, 22)
+        Me.cbPeriodStart.Size = New System.Drawing.Size(129, 26)
         Me.cbPeriodStart.TabIndex = 79
         '
         'cbPeriodEnd
@@ -1202,7 +1210,7 @@
         Me.cbPeriodEnd.Location = New System.Drawing.Point(280, 152)
         Me.cbPeriodEnd.Name = "cbPeriodEnd"
         Me.cbPeriodEnd.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbPeriodEnd.Size = New System.Drawing.Size(129, 22)
+        Me.cbPeriodEnd.Size = New System.Drawing.Size(129, 26)
         Me.cbPeriodEnd.TabIndex = 78
         '
         'obRange
@@ -1447,7 +1455,7 @@
         Me.Label4.Location = New System.Drawing.Point(48, 288)
         Me.Label4.Name = "Label4"
         Me.Label4.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label4.Size = New System.Drawing.Size(49, 21)
+        Me.Label4.Size = New System.Drawing.Size(82, 21)
         Me.Label4.TabIndex = 86
         Me.Label4.Text = "Start Date"
         '
@@ -1460,7 +1468,7 @@
         Me.Label5.Location = New System.Drawing.Point(48, 312)
         Me.Label5.Name = "Label5"
         Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label5.Size = New System.Drawing.Size(49, 21)
+        Me.Label5.Size = New System.Drawing.Size(82, 21)
         Me.Label5.TabIndex = 85
         Me.Label5.Text = "End Date"
         '
@@ -1501,6 +1509,74 @@
         Me._frCriteria_6.TabIndex = 55
         Me._frCriteria_6.TabStop = False
         Me._frCriteria_6.Text = "Vendor"
+        '
+        'DataGridView10
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView10.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        Me.DataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9})
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView10.DefaultCellStyle = DataGridViewCellStyle12
+        Me.DataGridView10.Enabled = False
+        Me.DataGridView10.Location = New System.Drawing.Point(279, 102)
+        Me.DataGridView10.Name = "DataGridView10"
+        Me.DataGridView10.RowHeadersVisible = False
+        Me.DataGridView10.Size = New System.Drawing.Size(169, 19)
+        Me.DataGridView10.TabIndex = 70
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Selected Vendors"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        '
+        'DataGridView9
+        '
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView9.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        Me.DataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView9.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8})
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView9.DefaultCellStyle = DataGridViewCellStyle14
+        Me.DataGridView9.Enabled = False
+        Me.DataGridView9.Location = New System.Drawing.Point(24, 102)
+        Me.DataGridView9.Name = "DataGridView9"
+        Me.DataGridView9.RowHeadersVisible = False
+        Me.DataGridView9.Size = New System.Drawing.Size(169, 19)
+        Me.DataGridView9.TabIndex = 69
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Vendors"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
         'dgSelVendor
         '
@@ -1625,6 +1701,74 @@
         Me._frCriteria_5.TabStop = False
         Me._frCriteria_5.Text = "Service"
         '
+        'DataGridView8
+        '
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView8.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        Me.DataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView8.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7})
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView8.DefaultCellStyle = DataGridViewCellStyle16
+        Me.DataGridView8.Enabled = False
+        Me.DataGridView8.Location = New System.Drawing.Point(272, 105)
+        Me.DataGridView8.Name = "DataGridView8"
+        Me.DataGridView8.RowHeadersVisible = False
+        Me.DataGridView8.Size = New System.Drawing.Size(177, 19)
+        Me.DataGridView8.TabIndex = 57
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Selected Services"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'DataGridView7
+        '
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView7.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView7.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6})
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView7.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridView7.Enabled = False
+        Me.DataGridView7.Location = New System.Drawing.Point(11, 103)
+        Me.DataGridView7.Name = "DataGridView7"
+        Me.DataGridView7.RowHeadersVisible = False
+        Me.DataGridView7.Size = New System.Drawing.Size(177, 19)
+        Me.DataGridView7.TabIndex = 56
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Services"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        '
         'dgSelService
         '
         Me.dgSelService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1748,6 +1892,74 @@
         Me._frCriteria_4.TabStop = False
         Me._frCriteria_4.Text = "Load"
         '
+        'DataGridView6
+        '
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        Me.DataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView6.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5})
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView6.DefaultCellStyle = DataGridViewCellStyle20
+        Me.DataGridView6.Enabled = False
+        Me.DataGridView6.Location = New System.Drawing.Point(283, 102)
+        Me.DataGridView6.Name = "DataGridView6"
+        Me.DataGridView6.RowHeadersVisible = False
+        Me.DataGridView6.Size = New System.Drawing.Size(169, 19)
+        Me.DataGridView6.TabIndex = 48
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Selected Load Types"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'DataGridView5
+        '
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle21.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
+        Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4})
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView5.DefaultCellStyle = DataGridViewCellStyle22
+        Me.DataGridView5.Enabled = False
+        Me.DataGridView5.Location = New System.Drawing.Point(19, 102)
+        Me.DataGridView5.Name = "DataGridView5"
+        Me.DataGridView5.RowHeadersVisible = False
+        Me.DataGridView5.Size = New System.Drawing.Size(169, 19)
+        Me.DataGridView5.TabIndex = 47
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Load"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
         'dgSelLoad
         '
         Me.dgSelLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1855,220 +2067,9 @@
         Me.dgDebug.Size = New System.Drawing.Size(424, 86)
         Me.dgDebug.TabIndex = 100
         '
-        'DataGridView5
-        '
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
-        Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4})
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView5.DefaultCellStyle = DataGridViewCellStyle22
-        Me.DataGridView5.Enabled = False
-        Me.DataGridView5.Location = New System.Drawing.Point(19, 102)
-        Me.DataGridView5.Name = "DataGridView5"
-        Me.DataGridView5.RowHeadersVisible = False
-        Me.DataGridView5.Size = New System.Drawing.Size(169, 19)
-        Me.DataGridView5.TabIndex = 47
-        '
-        'DataGridView6
-        '
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
-        Me.DataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView6.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5})
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Garamond", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView6.DefaultCellStyle = DataGridViewCellStyle20
-        Me.DataGridView6.Enabled = False
-        Me.DataGridView6.Location = New System.Drawing.Point(283, 102)
-        Me.DataGridView6.Name = "DataGridView6"
-        Me.DataGridView6.RowHeadersVisible = False
-        Me.DataGridView6.Size = New System.Drawing.Size(169, 19)
-        Me.DataGridView6.TabIndex = 48
-        '
-        'DataGridView7
-        '
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView7.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
-        Me.DataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView7.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6})
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView7.DefaultCellStyle = DataGridViewCellStyle18
-        Me.DataGridView7.Enabled = False
-        Me.DataGridView7.Location = New System.Drawing.Point(11, 103)
-        Me.DataGridView7.Name = "DataGridView7"
-        Me.DataGridView7.RowHeadersVisible = False
-        Me.DataGridView7.Size = New System.Drawing.Size(177, 19)
-        Me.DataGridView7.TabIndex = 56
-        '
-        'DataGridView9
-        '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView9.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView9.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView9.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DataGridView9.Enabled = False
-        Me.DataGridView9.Location = New System.Drawing.Point(24, 102)
-        Me.DataGridView9.Name = "DataGridView9"
-        Me.DataGridView9.RowHeadersVisible = False
-        Me.DataGridView9.Size = New System.Drawing.Size(169, 19)
-        Me.DataGridView9.TabIndex = 69
-        '
-        'DataGridView10
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView10.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
-        Me.DataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView10.DefaultCellStyle = DataGridViewCellStyle12
-        Me.DataGridView10.Enabled = False
-        Me.DataGridView10.Location = New System.Drawing.Point(279, 102)
-        Me.DataGridView10.Name = "DataGridView10"
-        Me.DataGridView10.RowHeadersVisible = False
-        Me.DataGridView10.Size = New System.Drawing.Size(169, 19)
-        Me.DataGridView10.TabIndex = 70
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Contents"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridView8
-        '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView8.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.DataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView8.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7})
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView8.DefaultCellStyle = DataGridViewCellStyle16
-        Me.DataGridView8.Enabled = False
-        Me.DataGridView8.Location = New System.Drawing.Point(272, 105)
-        Me.DataGridView8.Name = "DataGridView8"
-        Me.DataGridView8.RowHeadersVisible = False
-        Me.DataGridView8.Size = New System.Drawing.Size(177, 19)
-        Me.DataGridView8.TabIndex = 57
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Load"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Selected Load Types"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Services"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Selected Services"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Vendors"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Selected Vendors"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        '
         'frmRepUniversal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(2063, 1054)
@@ -2112,24 +2113,24 @@
         Me.Frame3.ResumeLayout(False)
         Me.Frame4.ResumeLayout(False)
         Me._frCriteria_6.ResumeLayout(False)
+        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSelVendor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgVendor, System.ComponentModel.ISupportInitialize).EndInit()
         Me._frCriteria_5.ResumeLayout(False)
+        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSelService, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgService, System.ComponentModel.ISupportInitialize).EndInit()
         Me._frCriteria_4.ResumeLayout(False)
+        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSelLoad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgLoad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.frCriteria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbTitle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.obEquipment, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgDebug, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

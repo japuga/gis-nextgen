@@ -22,7 +22,8 @@ Friend Class frmRepCostContSearch
 		Dim bContractRange As Boolean
 		Dim bSavingsPercentTotal As Boolean
 		Dim bUseGlmRate As Boolean
-		Dim bGlmAsVendor As Boolean
+        Dim bGlmAsVendor As Boolean
+        Dim bPeriodAsInvoice As Boolean
 		Dim nError As Short
 	End Structure
 	Private rptCostContParam As rptCostContParamUDT
@@ -299,7 +300,8 @@ ErrorHandler:
 		Dim sSavingsPercent As String
 		Dim sPrintFinal As String
 		Dim sPublish As String
-		
+        Dim sPeriodAsSave As String
+
 		
 		nRepNo = CShort(getRepNo(sLocalReport))
 		
@@ -356,10 +358,15 @@ ErrorHandler:
 		Else
 			sPublish = "FALSE"
 		End If
-		
-		
-        insert_costcont_report_criteria((cbCustId.Text), nRepNo, nReport, rptCostContParam.sStateId, VB6.GetItemData(cbGroupName, cbGroupName.SelectedIndex), (Me.cbReportTemplate).Text, (Me.txtReportCaption).Text, sIsPeriodSeq, VB6.GetItemData(Me.cbPeriodName, cbPeriodName.SelectedIndex), (Me.dtStartDate).Value, (Me.dtEndDate).Value, sPrintEquipmentStatus, sDetailedCharges, sContractRange, sSavingsPercent, sPublish, (Me.txtReportCaption.Text), sUseGlmRate, sGlmVendor, sPrintFinal)
-		
+
+        If Me.ckPeriodAsInvoice.CheckState = System.Windows.Forms.CheckState.Checked Then
+            sPeriodAsSave = "TRUE"
+        Else
+            sPeriodAsSave = "FALSE"
+        End If
+
+        insert_costcont_report_criteria((cbCustId.Text), nRepNo, nReport, rptCostContParam.sStateId, VB6.GetItemData(cbGroupName, cbGroupName.SelectedIndex), (Me.cbReportTemplate).Text, (Me.txtReportCaption).Text, sIsPeriodSeq, VB6.GetItemData(Me.cbPeriodName, cbPeriodName.SelectedIndex), (Me.dtStartDate).Value, (Me.dtEndDate).Value, sPrintEquipmentStatus, sDetailedCharges, sContractRange, sSavingsPercent, sPublish, (Me.txtReportCaption.Text), sUseGlmRate, sGlmVendor, sPrintFinal, sPeriodAsSave)
+
 	End Sub
 	'Verifies data entered is correct
 	Private Function val_fields() As Boolean
@@ -651,6 +658,12 @@ ErrorHandler:
             cmReport.Parameters("@sGlmAsVendor").Value = "T"
         Else
             cmReport.Parameters("@sGlmAsVendor").Value = "F"
+        End If
+
+        If rptCostContParam.bPeriodAsInvoice Then
+            cmReport.Parameters("@sPeriodAsInvoice").Value = "T"
+        Else
+            cmReport.Parameters("@sPeriodAsInvoice").Value = "F"
         End If
 
         cmReport.Parameters("@sReportTemplate").Value = cbReportTemplate.Text
@@ -1032,4 +1045,8 @@ ErrorHandler:
 			
 		End If
 	End Sub
+
+    Private Sub ckGlmVendor_CheckedChanged(sender As Object, e As EventArgs) Handles ckGlmVendor.CheckedChanged
+
+    End Sub
 End Class

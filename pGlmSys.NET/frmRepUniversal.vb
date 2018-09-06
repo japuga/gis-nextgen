@@ -153,7 +153,8 @@ Friend Class frmRepUniversal
         sb.Items(0).Text = "Validating Criteria"
 
         Thread.Sleep(1000)
-		
+
+
 		If val_fields Then
 			If get_criteria Then
 				
@@ -207,6 +208,7 @@ Friend Class frmRepUniversal
 					rptUniversalParam.nPeriodSeqTo = 0
                     rptUniversalParam.sStartDate = dtStartDate.Value
                     rptUniversalParam.sEndDate = dtEndDate.Value
+                    rptUniversalParam.sPeriodName = ""
 				End If
 				
 				'Caption

@@ -41,28 +41,28 @@
 	'It can be modified using the Windows Form Designer.
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccess))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.picLogo = New System.Windows.Forms.PictureBox
+        Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.cmdCancel = New System.Windows.Forms.Button
-        Me.cmdOk = New System.Windows.Forms.Button
-        Me.txtPassword = New System.Windows.Forms.TextBox
-        Me.txtUser = New System.Windows.Forms.TextBox
-        Me.Frame1 = New System.Windows.Forms.Panel
-        Me.cbServername = New System.Windows.Forms.ComboBox
-        Me.cmdOptions = New System.Windows.Forms.Button
-        Me.Label3 = New System.Windows.Forms.Label
-        Me._imgKey_3 = New System.Windows.Forms.PictureBox
-        Me._imgKey_2 = New System.Windows.Forms.PictureBox
-        Me._imgKey_1 = New System.Windows.Forms.PictureBox
-        Me.imgUnlock = New System.Windows.Forms.PictureBox
-        Me.imgLock = New System.Windows.Forms.PictureBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lVersion = New System.Windows.Forms.Label
-        Me.lblGlm = New System.Windows.Forms.Label
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtUser = New System.Windows.Forms.TextBox()
+        Me.Frame1 = New System.Windows.Forms.Panel()
+        Me.cbServername = New System.Windows.Forms.ComboBox()
+        Me.cmdOptions = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me._imgKey_3 = New System.Windows.Forms.PictureBox()
+        Me._imgKey_2 = New System.Windows.Forms.PictureBox()
+        Me._imgKey_1 = New System.Windows.Forms.PictureBox()
+        Me.imgUnlock = New System.Windows.Forms.PictureBox()
+        Me.imgLock = New System.Windows.Forms.PictureBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lVersion = New System.Windows.Forms.Label()
+        Me.lblGlm = New System.Windows.Forms.Label()
         Me.imgKey = New Microsoft.VisualBasic.Compatibility.VB6.PictureBoxArray(Me.components)
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Frame1.SuspendLayout()
@@ -134,7 +134,7 @@
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtPassword.Size = New System.Drawing.Size(145, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(145, 26)
         Me.txtPassword.TabIndex = 1
         '
         'txtUser
@@ -148,7 +148,7 @@
         Me.txtUser.MaxLength = 14
         Me.txtUser.Name = "txtUser"
         Me.txtUser.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtUser.Size = New System.Drawing.Size(145, 20)
+        Me.txtUser.Size = New System.Drawing.Size(145, 26)
         Me.txtUser.TabIndex = 0
         '
         'Frame1
@@ -185,7 +185,7 @@
         Me.cbServername.Location = New System.Drawing.Point(78, 109)
         Me.cbServername.Name = "cbServername"
         Me.cbServername.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbServername.Size = New System.Drawing.Size(145, 21)
+        Me.cbServername.Size = New System.Drawing.Size(145, 29)
         Me.cbServername.TabIndex = 3
         '
         'cmdOptions
@@ -308,8 +308,7 @@
         '
         'lblGlm
         '
-        Me.lblGlm.BackColor = System.Drawing.Color.White
-        Me.lblGlm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblGlm.BackColor = System.Drawing.Color.LightYellow
         Me.lblGlm.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblGlm.Font = New System.Drawing.Font("Tahoma", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGlm.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(128, Byte), Integer))
@@ -324,7 +323,7 @@
         'frmAccess
         '
         Me.AcceptButton = Me.cmdOk
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(17.0!, 33.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(26.0!, 49.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Info
         Me.ClientSize = New System.Drawing.Size(512, 307)

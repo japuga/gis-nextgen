@@ -827,7 +827,7 @@ ErrorHandler:
     End Function
     'E014-PENDING
     'Inserts record in RptCriteriaCostCont
-    Public Function insert_costcont_report_criteria(ByRef custId As String, ByRef repNo As Short, ByRef reportId As Integer, ByRef stateId As String, ByRef groupSeq As Short, ByRef repTemplateName As String, ByRef reportCaption As String, ByRef isPeriodSeq As String, ByRef periodSeq As Short, ByRef startDate As Date, ByRef endDate As Date, ByRef printEquipmentStatus As String, ByRef showDetailedCharges As String, ByRef showContractDate As String, ByRef showSavingsPercentTotal As String, ByRef publishToWeb As String, ByRef webReportName As String, ByRef useGlmRate As String, ByRef showGlmVendor As String, ByRef isFinalVersion As String) As Boolean
+    Public Function insert_costcont_report_criteria(ByRef custId As String, ByRef repNo As Short, ByRef reportId As Integer, ByRef stateId As String, ByRef groupSeq As Short, ByRef repTemplateName As String, ByRef reportCaption As String, ByRef isPeriodSeq As String, ByRef periodSeq As Short, ByRef startDate As Date, ByRef endDate As Date, ByRef printEquipmentStatus As String, ByRef showDetailedCharges As String, ByRef showContractDate As String, ByRef showSavingsPercentTotal As String, ByRef publishToWeb As String, ByRef webReportName As String, ByRef useGlmRate As String, ByRef showGlmVendor As String, ByRef isFinalVersion As String, ByVal periodAsInvoice As String) As Boolean
 
         Dim nRecords As Short
 

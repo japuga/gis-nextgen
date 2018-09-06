@@ -60,50 +60,51 @@
     'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ckPrintFinal = New System.Windows.Forms.CheckBox
-        Me.ckGlmVendor = New System.Windows.Forms.CheckBox
-        Me.cbReportTemplateDesc = New System.Windows.Forms.ComboBox
-        Me.ckUseGlmRate = New System.Windows.Forms.CheckBox
-        Me.ckShowSavingsPercent = New System.Windows.Forms.CheckBox
-        Me.ckContractRange = New System.Windows.Forms.CheckBox
-        Me.ckDetailedCharges = New System.Windows.Forms.CheckBox
-        Me.txtReportName = New System.Windows.Forms.TextBox
-        Me.ckPublish = New System.Windows.Forms.CheckBox
-        Me.cbReportTemplate = New System.Windows.Forms.ComboBox
-        Me.txtReportCaption = New System.Windows.Forms.TextBox
-        Me.ckPrintStatus = New System.Windows.Forms.CheckBox
-        Me.cdOpen = New System.Windows.Forms.OpenFileDialog
-        Me.cdSave = New System.Windows.Forms.SaveFileDialog
-        Me.cdFont = New System.Windows.Forms.FontDialog
-        Me.cdColor = New System.Windows.Forms.ColorDialog
-        Me.cdPrint = New System.Windows.Forms.PrintDialog
-        Me.cmdCancel = New System.Windows.Forms.Button
-        Me.cmdOk = New System.Windows.Forms.Button
-        Me.Frame1 = New System.Windows.Forms.GroupBox
-        Me.cbPeriodName = New System.Windows.Forms.ComboBox
-        Me.obRange = New System.Windows.Forms.RadioButton
-        Me.obPeriod = New System.Windows.Forms.RadioButton
-        Me.lbEndDate = New System.Windows.Forms.Label
-        Me.lbStartDate = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.cbGroupName = New System.Windows.Forms.ComboBox
-        Me.cbStateId = New System.Windows.Forms.ComboBox
-        Me.cbCustId = New System.Windows.Forms.ComboBox
-        Me.cbCustName = New System.Windows.Forms.ComboBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.ListView1 = New System.Windows.Forms.ListView
-        Me.dtStartDate = New System.Windows.Forms.DateTimePicker
-        Me.dtEndDate = New System.Windows.Forms.DateTimePicker
+        Me.ckPrintFinal = New System.Windows.Forms.CheckBox()
+        Me.ckGlmVendor = New System.Windows.Forms.CheckBox()
+        Me.cbReportTemplateDesc = New System.Windows.Forms.ComboBox()
+        Me.ckUseGlmRate = New System.Windows.Forms.CheckBox()
+        Me.ckShowSavingsPercent = New System.Windows.Forms.CheckBox()
+        Me.ckContractRange = New System.Windows.Forms.CheckBox()
+        Me.ckDetailedCharges = New System.Windows.Forms.CheckBox()
+        Me.txtReportName = New System.Windows.Forms.TextBox()
+        Me.ckPublish = New System.Windows.Forms.CheckBox()
+        Me.cbReportTemplate = New System.Windows.Forms.ComboBox()
+        Me.txtReportCaption = New System.Windows.Forms.TextBox()
+        Me.ckPrintStatus = New System.Windows.Forms.CheckBox()
+        Me.cdOpen = New System.Windows.Forms.OpenFileDialog()
+        Me.cdSave = New System.Windows.Forms.SaveFileDialog()
+        Me.cdFont = New System.Windows.Forms.FontDialog()
+        Me.cdColor = New System.Windows.Forms.ColorDialog()
+        Me.cdPrint = New System.Windows.Forms.PrintDialog()
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.cmdOk = New System.Windows.Forms.Button()
+        Me.Frame1 = New System.Windows.Forms.GroupBox()
+        Me.dtEndDate = New System.Windows.Forms.DateTimePicker()
+        Me.dtStartDate = New System.Windows.Forms.DateTimePicker()
+        Me.cbPeriodName = New System.Windows.Forms.ComboBox()
+        Me.obRange = New System.Windows.Forms.RadioButton()
+        Me.obPeriod = New System.Windows.Forms.RadioButton()
+        Me.lbEndDate = New System.Windows.Forms.Label()
+        Me.lbStartDate = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbGroupName = New System.Windows.Forms.ComboBox()
+        Me.cbStateId = New System.Windows.Forms.ComboBox()
+        Me.cbCustId = New System.Windows.Forms.ComboBox()
+        Me.cbCustName = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.ckPeriodAsInvoice = New System.Windows.Forms.CheckBox()
         Me.Frame1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,10 +114,10 @@
         Me.ckPrintFinal.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckPrintFinal.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckPrintFinal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckPrintFinal.Location = New System.Drawing.Point(176, 392)
+        Me.ckPrintFinal.Location = New System.Drawing.Point(259, 391)
         Me.ckPrintFinal.Name = "ckPrintFinal"
         Me.ckPrintFinal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckPrintFinal.Size = New System.Drawing.Size(161, 17)
+        Me.ckPrintFinal.Size = New System.Drawing.Size(161, 25)
         Me.ckPrintFinal.TabIndex = 36
         Me.ckPrintFinal.Text = "Print Final Version"
         Me.ckPrintFinal.UseVisualStyleBackColor = False
@@ -127,10 +128,10 @@
         Me.ckGlmVendor.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckGlmVendor.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckGlmVendor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckGlmVendor.Location = New System.Drawing.Point(16, 464)
+        Me.ckGlmVendor.Location = New System.Drawing.Point(16, 483)
         Me.ckGlmVendor.Name = "ckGlmVendor"
         Me.ckGlmVendor.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckGlmVendor.Size = New System.Drawing.Size(145, 17)
+        Me.ckGlmVendor.Size = New System.Drawing.Size(199, 25)
         Me.ckGlmVendor.TabIndex = 35
         Me.ckGlmVendor.Text = "Display GLM as vendor"
         Me.ckGlmVendor.UseVisualStyleBackColor = False
@@ -145,7 +146,7 @@
         Me.cbReportTemplateDesc.Location = New System.Drawing.Point(303, 48)
         Me.cbReportTemplateDesc.Name = "cbReportTemplateDesc"
         Me.cbReportTemplateDesc.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbReportTemplateDesc.Size = New System.Drawing.Size(257, 22)
+        Me.cbReportTemplateDesc.Size = New System.Drawing.Size(257, 26)
         Me.cbReportTemplateDesc.TabIndex = 34
         '
         'ckUseGlmRate
@@ -154,10 +155,10 @@
         Me.ckUseGlmRate.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckUseGlmRate.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckUseGlmRate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckUseGlmRate.Location = New System.Drawing.Point(16, 440)
+        Me.ckUseGlmRate.Location = New System.Drawing.Point(16, 452)
         Me.ckUseGlmRate.Name = "ckUseGlmRate"
         Me.ckUseGlmRate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckUseGlmRate.Size = New System.Drawing.Size(145, 17)
+        Me.ckUseGlmRate.Size = New System.Drawing.Size(145, 25)
         Me.ckUseGlmRate.TabIndex = 33
         Me.ckUseGlmRate.Text = "Use GLM Rate"
         Me.ckUseGlmRate.UseVisualStyleBackColor = False
@@ -168,10 +169,10 @@
         Me.ckShowSavingsPercent.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckShowSavingsPercent.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckShowSavingsPercent.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckShowSavingsPercent.Location = New System.Drawing.Point(176, 360)
+        Me.ckShowSavingsPercent.Location = New System.Drawing.Point(259, 360)
         Me.ckShowSavingsPercent.Name = "ckShowSavingsPercent"
         Me.ckShowSavingsPercent.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckShowSavingsPercent.Size = New System.Drawing.Size(169, 17)
+        Me.ckShowSavingsPercent.Size = New System.Drawing.Size(235, 25)
         Me.ckShowSavingsPercent.TabIndex = 32
         Me.ckShowSavingsPercent.Text = "Show Savings Percent Total"
         Me.ckShowSavingsPercent.UseVisualStyleBackColor = False
@@ -182,10 +183,10 @@
         Me.ckContractRange.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckContractRange.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckContractRange.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckContractRange.Location = New System.Drawing.Point(16, 416)
+        Me.ckContractRange.Location = New System.Drawing.Point(16, 421)
         Me.ckContractRange.Name = "ckContractRange"
         Me.ckContractRange.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckContractRange.Size = New System.Drawing.Size(137, 17)
+        Me.ckContractRange.Size = New System.Drawing.Size(188, 25)
         Me.ckContractRange.TabIndex = 31
         Me.ckContractRange.Text = "Show Contract dates"
         Me.ckContractRange.UseVisualStyleBackColor = False
@@ -196,10 +197,10 @@
         Me.ckDetailedCharges.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckDetailedCharges.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckDetailedCharges.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckDetailedCharges.Location = New System.Drawing.Point(16, 384)
+        Me.ckDetailedCharges.Location = New System.Drawing.Point(16, 390)
         Me.ckDetailedCharges.Name = "ckDetailedCharges"
         Me.ckDetailedCharges.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckDetailedCharges.Size = New System.Drawing.Size(145, 25)
+        Me.ckDetailedCharges.Size = New System.Drawing.Size(209, 25)
         Me.ckDetailedCharges.TabIndex = 30
         Me.ckDetailedCharges.Text = "Show Detailed Charges"
         Me.ckDetailedCharges.UseVisualStyleBackColor = False
@@ -211,11 +212,11 @@
         Me.txtReportName.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtReportName.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReportName.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtReportName.Location = New System.Drawing.Point(248, 448)
+        Me.txtReportName.Location = New System.Drawing.Point(331, 449)
         Me.txtReportName.MaxLength = 0
         Me.txtReportName.Name = "txtReportName"
         Me.txtReportName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtReportName.Size = New System.Drawing.Size(201, 20)
+        Me.txtReportName.Size = New System.Drawing.Size(201, 26)
         Me.txtReportName.TabIndex = 29
         '
         'ckPublish
@@ -224,10 +225,10 @@
         Me.ckPublish.Cursor = System.Windows.Forms.Cursors.Default
         Me.ckPublish.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ckPublish.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ckPublish.Location = New System.Drawing.Point(176, 416)
+        Me.ckPublish.Location = New System.Drawing.Point(259, 418)
         Me.ckPublish.Name = "ckPublish"
         Me.ckPublish.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckPublish.Size = New System.Drawing.Size(121, 25)
+        Me.ckPublish.Size = New System.Drawing.Size(161, 25)
         Me.ckPublish.TabIndex = 27
         Me.ckPublish.Text = "Publish to Web"
         Me.ckPublish.UseVisualStyleBackColor = False
@@ -258,7 +259,7 @@
         Me.txtReportCaption.MaxLength = 0
         Me.txtReportCaption.Name = "txtReportCaption"
         Me.txtReportCaption.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtReportCaption.Size = New System.Drawing.Size(209, 20)
+        Me.txtReportCaption.Size = New System.Drawing.Size(209, 26)
         Me.txtReportCaption.TabIndex = 7
         '
         'ckPrintStatus
@@ -270,7 +271,7 @@
         Me.ckPrintStatus.Location = New System.Drawing.Point(16, 360)
         Me.ckPrintStatus.Name = "ckPrintStatus"
         Me.ckPrintStatus.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ckPrintStatus.Size = New System.Drawing.Size(137, 17)
+        Me.ckPrintStatus.Size = New System.Drawing.Size(209, 25)
         Me.ckPrintStatus.TabIndex = 13
         Me.ckPrintStatus.Text = "Print Equipment Status"
         Me.ckPrintStatus.UseVisualStyleBackColor = False
@@ -281,10 +282,10 @@
         Me.cmdCancel.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancel.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdCancel.Location = New System.Drawing.Point(312, 496)
+        Me.cmdCancel.Location = New System.Drawing.Point(393, 505)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cmdCancel.Size = New System.Drawing.Size(57, 41)
+        Me.cmdCancel.Size = New System.Drawing.Size(101, 41)
         Me.cmdCancel.TabIndex = 18
         Me.cmdCancel.Text = "Cancel"
         Me.cmdCancel.UseVisualStyleBackColor = False
@@ -295,10 +296,10 @@
         Me.cmdOk.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmdOk.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdOk.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.cmdOk.Location = New System.Drawing.Point(208, 496)
+        Me.cmdOk.Location = New System.Drawing.Point(262, 505)
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cmdOk.Size = New System.Drawing.Size(57, 41)
+        Me.cmdOk.Size = New System.Drawing.Size(93, 41)
         Me.cmdOk.TabIndex = 17
         Me.cmdOk.Text = "OK"
         Me.cmdOk.UseVisualStyleBackColor = False
@@ -306,6 +307,7 @@
         'Frame1
         '
         Me.Frame1.BackColor = System.Drawing.SystemColors.Control
+        Me.Frame1.Controls.Add(Me.ListView1)
         Me.Frame1.Controls.Add(Me.dtEndDate)
         Me.Frame1.Controls.Add(Me.dtStartDate)
         Me.Frame1.Controls.Add(Me.cbPeriodName)
@@ -322,10 +324,26 @@
         Me.Frame1.Location = New System.Drawing.Point(16, 152)
         Me.Frame1.Name = "Frame1"
         Me.Frame1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Frame1.Size = New System.Drawing.Size(497, 201)
+        Me.Frame1.Size = New System.Drawing.Size(728, 201)
         Me.Frame1.TabIndex = 8
         Me.Frame1.TabStop = False
         Me.Frame1.Text = "Period/Date"
+        '
+        'dtEndDate
+        '
+        Me.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtEndDate.Location = New System.Drawing.Point(120, 159)
+        Me.dtEndDate.Name = "dtEndDate"
+        Me.dtEndDate.Size = New System.Drawing.Size(89, 26)
+        Me.dtEndDate.TabIndex = 25
+        '
+        'dtStartDate
+        '
+        Me.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtStartDate.Location = New System.Drawing.Point(120, 136)
+        Me.dtStartDate.Name = "dtStartDate"
+        Me.dtStartDate.Size = New System.Drawing.Size(89, 26)
+        Me.dtStartDate.TabIndex = 24
         '
         'cbPeriodName
         '
@@ -337,7 +355,7 @@
         Me.cbPeriodName.Location = New System.Drawing.Point(120, 32)
         Me.cbPeriodName.Name = "cbPeriodName"
         Me.cbPeriodName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbPeriodName.Size = New System.Drawing.Size(129, 22)
+        Me.cbPeriodName.Size = New System.Drawing.Size(129, 26)
         Me.cbPeriodName.TabIndex = 11
         '
         'obRange
@@ -458,7 +476,7 @@
         Me.cbGroupName.Location = New System.Drawing.Point(80, 48)
         Me.cbGroupName.Name = "cbGroupName"
         Me.cbGroupName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbGroupName.Size = New System.Drawing.Size(137, 22)
+        Me.cbGroupName.Size = New System.Drawing.Size(137, 26)
         Me.cbGroupName.TabIndex = 6
         '
         'cbStateId
@@ -471,7 +489,7 @@
         Me.cbStateId.Location = New System.Drawing.Point(303, 15)
         Me.cbStateId.Name = "cbStateId"
         Me.cbStateId.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbStateId.Size = New System.Drawing.Size(73, 22)
+        Me.cbStateId.Size = New System.Drawing.Size(73, 26)
         Me.cbStateId.TabIndex = 4
         '
         'cbCustId
@@ -483,7 +501,7 @@
         Me.cbCustId.Location = New System.Drawing.Point(176, 0)
         Me.cbCustId.Name = "cbCustId"
         Me.cbCustId.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbCustId.Size = New System.Drawing.Size(49, 22)
+        Me.cbCustId.Size = New System.Drawing.Size(49, 26)
         Me.cbCustId.TabIndex = 2
         Me.cbCustId.Text = "Combo2"
         Me.cbCustId.Visible = False
@@ -498,7 +516,7 @@
         Me.cbCustName.Location = New System.Drawing.Point(78, 16)
         Me.cbCustName.Name = "cbCustName"
         Me.cbCustName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cbCustName.Size = New System.Drawing.Size(137, 22)
+        Me.cbCustName.Size = New System.Drawing.Size(137, 26)
         Me.cbCustName.TabIndex = 1
         '
         'Label10
@@ -507,10 +525,10 @@
         Me.Label10.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label10.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label10.Location = New System.Drawing.Point(176, 448)
+        Me.Label10.Location = New System.Drawing.Point(259, 449)
         Me.Label10.Name = "Label10"
         Me.Label10.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label10.Size = New System.Drawing.Size(65, 33)
+        Me.Label10.Size = New System.Drawing.Size(65, 25)
         Me.Label10.TabIndex = 28
         Me.Label10.Text = "Report Name"
         '
@@ -581,36 +599,34 @@
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(243, 522)
+        Me.ListView1.Location = New System.Drawing.Point(569, -39)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(121, 97)
         Me.ListView1.TabIndex = 37
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.Visible = False
         '
-        'dtStartDate
+        'ckPeriodAsInvoice
         '
-        Me.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtStartDate.Location = New System.Drawing.Point(120, 136)
-        Me.dtStartDate.Name = "dtStartDate"
-        Me.dtStartDate.Size = New System.Drawing.Size(89, 20)
-        Me.dtStartDate.TabIndex = 24
-        '
-        'dtEndDate
-        '
-        Me.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtEndDate.Location = New System.Drawing.Point(120, 159)
-        Me.dtEndDate.Name = "dtEndDate"
-        Me.dtEndDate.Size = New System.Drawing.Size(89, 20)
-        Me.dtEndDate.TabIndex = 25
+        Me.ckPeriodAsInvoice.BackColor = System.Drawing.SystemColors.Control
+        Me.ckPeriodAsInvoice.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ckPeriodAsInvoice.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ckPeriodAsInvoice.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ckPeriodAsInvoice.Location = New System.Drawing.Point(533, 360)
+        Me.ckPeriodAsInvoice.Name = "ckPeriodAsInvoice"
+        Me.ckPeriodAsInvoice.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.ckPeriodAsInvoice.Size = New System.Drawing.Size(161, 25)
+        Me.ckPeriodAsInvoice.TabIndex = 37
+        Me.ckPeriodAsInvoice.Text = "Print Final Version"
+        Me.ckPeriodAsInvoice.UseVisualStyleBackColor = False
         '
         'frmRepCostContSearch
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(580, 549)
-        Me.Controls.Add(Me.ListView1)
+        Me.ClientSize = New System.Drawing.Size(770, 575)
+        Me.Controls.Add(Me.ckPeriodAsInvoice)
         Me.Controls.Add(Me.ckPrintFinal)
         Me.Controls.Add(Me.ckGlmVendor)
         Me.Controls.Add(Me.cbReportTemplateDesc)
@@ -656,4 +672,5 @@
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents dtEndDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtStartDate As System.Windows.Forms.DateTimePicker
+    Public WithEvents ckPeriodAsInvoice As System.Windows.Forms.CheckBox
 End Class

@@ -1672,7 +1672,7 @@ ErrorHandler:
         'Bank Header
         'UPGRADE_ISSUE: Constant vbPRPSLetter was not upgraded. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"'
         'UPGRADE_ISSUE: 'Printer. property 'Printer..PaperSize was not upgraded. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'
-        ''Printer..PaperSize = vbPRPSLetter
+        Printer.PaperSize = vbPRPSLetter
         'UPGRADE_ISSUE: 'Printer. property 'Printer..FontName was not upgraded. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'
         ''Printer..FontName = "Arial Narrow" '"Times New Roman"
         'UPGRADE_ISSUE: 'Printer. property 'Printer..FontSize was not upgraded. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="076C26E5-B7A9-4E77-B69C-B4448DF39E58"'
@@ -1997,7 +1997,13 @@ ErrorHandler:
         'Printer..CurrentY = 2.94 * 1440 '2.95, 2.99, 3.08
 
         sMicrocode = "C" & Trim(sCheckNo) & "C A" & Trim(sBankAba) & "A C" & Trim(sBankAccount) & "C"
-        sMicrocode = "C" & Trim(sCheckNo) & "C A" & Trim(sBankAba) & "A" & Left(Trim(sBankAccount), 3) & " " & Mid(Trim(sBankAccount), 4, 2) & " " & Right(Trim(sBankAccount), 5) & "C"
+        'If Len(Trim(sBankAccount)) = 9 Then
+        ' sMicrocode = "C" & Trim(sCheckNo) & "C A" & Trim(sBankAba) & "A" & Left(Trim(sBankAccount), 3) & " " & Mid(Trim(sBankAccount), 4, 2) & " " & Right(Trim(sBankAccount), 4) & "C"
+        ' Else
+        ' sMicrocode = "C" & Trim(sCheckNo) & "C A" & Trim(sBankAba) & "A" & Left(Trim(sBankAccount), 3) & " " & Mid(Trim(sBankAccount), 4, 2) & " " & Right(Trim(sBankAccount), 5) & "C"
+        ' End If
+        sMicrocode = "C" & Trim(sCheckNo) & "C A" & Trim(sBankAba) & "A" & Left(Trim(sBankAccount), 3) & _
+            " " & Mid(Trim(sBankAccount), 4, 2) & " " & Right(Trim(sBankAccount), Len(Trim(sBankAccount)) - 5) & "C"
 
         'sMicrocode = "A111993776A 4882133021C 0867"
         'UPGRADE_ISSUE: 'Printer. object was not upgraded. Click for more: 'ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="6B85A2A7-FE9F-4FBE-AA0C-CF11AC86A305"'
