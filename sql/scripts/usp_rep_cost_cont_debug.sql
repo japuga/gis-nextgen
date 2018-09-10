@@ -19,32 +19,33 @@ GO
 
 
 CREATE   PROC [dbo].[usp_rep_cost_cont_debug] 
-	@nReportId INT, --Identificador del reporte
-	@sCustId CHAR(2), @sStateId CHAR(3),
-	@nGroupSeq INT, @nPeriodSeq INT,
-	@sPeriodSeq CHAR(1),   --T : TRUE si la busqueda es por periodo
-	@sStartDate SMALLDATETIME,
-	@sEndDate SMALLDATETIME,
-	@sReportCaption CHAR(30),
-	@sDetailedCharges CHAR(1), --T: TRUE if detailed charges are shown per line jp 2.9.0
-	@sShowContractRange CHAR(1), --T: TRUE if contract start/end dates must be shown jp 2.9.0
-	@sShowSavingsPercentTotal CHAR(1), --T: TRUE if Savings Percent total must be shown in the last page
-	@sUseGlmRate CHAR(1), --T: TRUE if Glm Rate must be used instead of Current Rate
-	@sGlmAsVendor CHAR(1),  --T: TRUE if vendors must be shown as GLM DFW Inc
-	@sReportTemplate CHAR(50),
-	@nError INT OUTPUT
+    @nReportId INT, --Identificador del reporte
+    @sCustId CHAR(2), @sStateId CHAR(3),
+    @nGroupSeq INT, @nPeriodSeq INT,
+    @sPeriodSeq CHAR(1),   --T : TRUE si la busqueda es por periodo
+    @sStartDate SMALLDATETIME,
+    @sEndDate SMALLDATETIME,
+    @sReportCaption CHAR(30),
+    @sDetailedCharges CHAR(1), --T: TRUE if detailed charges are shown per line jp 2.9.0
+    @sShowContractRange CHAR(1), --T: TRUE if contract start/end dates must be shown jp 2.9.0
+    @sShowSavingsPercentTotal CHAR(1), --T: TRUE if Savings Percent total must be shown in the last page
+    @sUseGlmRate CHAR(1), --T: TRUE if Glm Rate must be used instead of Current Rate
+    @sGlmAsVendor CHAR(1),  --T: TRUE if vendors must be shown as GLM DFW Inc
+    @sReportTemplate CHAR(50),
+    @sPeriodAsInvoice CHAR(1), --T: TRUE if billing period must be shown instead of invoice number
+    @nError INT OUTPUT
 AS
 --CHANGES
---08.30.12	Added invoice total per location
---04.01.11	Savings do not show when savings are too high
---06.24.10	CR-105 - Changes due to Glm Rate auditing
---04.03.10 	Added option to compute with Glm Rate instead of Current Rate
+--08.30.12  Added invoice total per location
+--04.01.11  Savings do not show when savings are too high
+--06.24.10  CR-105 - Changes due to Glm Rate auditing
+--04.03.10  Added option to compute with Glm Rate instead of Current Rate
 --08/03/07      Added Savings Percent total
---10.19.06	Replaced RepData with RptCostCont table to void data report mapping
---		and facilitate transfers to web site application
---05.14.05	Do not show negative savings when customer.negative_savings_flag='NO'
---05.12.05 	Added bill_saving_flag for VZ FBR
---06.14.04 	Report Caption
+--10.19.06  Replaced RepData with RptCostCont table to void data report mapping
+--      and facilitate transfers to web site application
+--05.14.05  Do not show negative savings when customer.negative_savings_flag='NO'
+--05.12.05  Added bill_saving_flag for VZ FBR
+--06.14.04  Report Caption
 DECLARE @sGroupName CHAR (20)
 DECLARE @sPeriodStartDate CHAR(10)
 DECLARE @sPeriodEndDate CHAR(10)
@@ -85,10 +86,10 @@ DECLARE @nTotalServ DECIMAL (7,2)
 DECLARE @nTotalGlmrateServ DECIMAL (7,2)   --CR-105
 
 DECLARE @nSavings DECIMAL (8,2)    --jp.20110401    (6,2)
-	
+    
 DECLARE @nCurrGlmRateSavings DECIMAL (6,2) --CR-105
 DECLARE @nTotalCurrentGlmrateSavings DECIMAL(12,2)  --CR-105
-DECLARE @nNonBillSavings DECIMAL (6,2)		
+DECLARE @nNonBillSavings DECIMAL (6,2)      
 DECLARE @nCountServices INT
 DECLARE @sUnitType CHAR(3)
 DECLARE @nUnitTypeTotal DECIMAL(14,4) --DECIMAL(7,2) to (14,4)
@@ -147,12 +148,13 @@ DECLARE @SYS_CCR_GLMRATE_AUDIT CHAR(50) --CR-105
 DECLARE @sStmt nvarchar(4000)
 DECLARE @sStmt3 nvarchar(4000)
 DECLARE @sFilter NVARCHAR(500)
+DECLARE @sPeriodName CHAR(200)
 
 --Genera una linea por cada servicio en VinvoiceDet
 --Paso 1.-Selecciona todos los detalles con servicios asociados a equipo
 --    y no asociados a equipo
 --Paso 2.-Luego se aplican los filtros para eliminar registros adicionales
---		State, Store Group, Period, 
+--      State, Store Group, Period, 
 --Paso 3.-Se calculan Units y Usage. Se cuentan las unidades y se calcula el subtotal
 --   por servicio en cada factura. Se hacen negativos aquellos servicios que son
 --   creditos.
@@ -229,6 +231,7 @@ report_start SMALLDATETIME,
 report_end SMALLDATETIME,
 label_savingsPercent CHAR(30) DEFAULT ' ',
 account_mask CHAR(40) DEFAULT ' ',
+period_name CHAR(200) DEFAULT ' ',
 serv_desc1 CHAR(30) DEFAULT ' ',
 serv_desc2 CHAR(30) DEFAULT ' ',
 serv_desc3 CHAR(30) DEFAULT ' ',
@@ -284,20 +287,20 @@ SET @sGroupName = (SELECT group_name FROM groups WHERE group_seq = @nGroupSeq)
 IF @sGroupName <> 'All'
 BEGIN
    SET @sFilter = @sFilter + N' AND s.store_id IN ( ' +
-	' SELECT store_id FROM GroupStore ' +
-	' WHERE cust_id = ''' + @sCustId + '''' +
+    ' SELECT store_id FROM GroupStore ' +
+    ' WHERE cust_id = ''' + @sCustId + '''' +
     ' AND group_seq = ' + STR(@nGroupSeq) +')'
 END
 
 IF @sPeriodSeq = 'T' -- TRUE
-BEGIN 	
-	SET @sFilter = @sFilter + N' AND vi.period_seq = '+ STR(@nPeriodSeq)
+BEGIN   
+    SET @sFilter = @sFilter + N' AND vi.period_seq = '+ STR(@nPeriodSeq)
 END
 ELSE
 BEGIN
-	SET @sFilter = @sFilter + N' AND vi.vinvoice_date '+
-	      ' BETWEEN '''+RTRIM(CAST(@sStartDate AS CHAR(19))) +''' '+
-	      ' AND '''+ RTRIM(CAST(@sEndDate AS CHAR(19))) +''' '
+    SET @sFilter = @sFilter + N' AND vi.vinvoice_date '+
+          ' BETWEEN '''+RTRIM(CAST(@sStartDate AS CHAR(19))) +''' '+
+          ' AND '''+ RTRIM(CAST(@sEndDate AS CHAR(19))) +''' '
 END
 
 
@@ -314,7 +317,7 @@ SET @sStmt =N'INSERT INTO #tmpInvoice (' +
 'load_id, eqpt_temp, content_desc,' +
 'serv_desc, rate_status, eqpt_mask,' +
 'frequency_mask,  report_start, ' +
-'report_end) ' +
+'report_end, period_name) ' +
 ' SELECT DISTINCT vi.cust_id, c.cust_report_name ,' +
 '    s.store_number, s.store_id, s.store_address, s.store_city, ' +
 '    s.state_id, s.store_co_code, s.store_name, '+
@@ -337,26 +340,33 @@ SET @sStmt =N'INSERT INTO #tmpInvoice (' +
 '       ISNULL(vc.freq_day6,''''), ISNULL(vc.freq_day7,''''))  AS CHAR(60))AS frequency_mask ,  ' 
 
 IF @sPeriodSeq = 'T' -- TRUE
-BEGIN 	
-	SET @sStmt = RTRIM(@sStmt) + 
-	'(SELECT ' +
-	' CONVERT (CHAR(10),period.period_start_date,101)  ' +
-	'FROM period where period.period_seq = vi.period_seq) AS report_start, ' +
-	'(SELECT ' +
-	' CONVERT (CHAR(10),period.period_end_date,101)  ' +
-	'FROM period where period.period_seq = vi.period_seq) AS report_end '
+BEGIN   
+    SET @sStmt = RTRIM(@sStmt) + 
+    '(SELECT ' +
+    ' CONVERT (CHAR(10),period.period_start_date,101)  ' +
+    'FROM period where period.period_seq = vi.period_seq) AS report_start, ' +
+    '(SELECT ' +
+    ' CONVERT (CHAR(10),period.period_end_date,101)  ' +
+    'FROM period where period.period_seq = vi.period_seq) AS report_end, ' +
+    '(SELECT period_name ' +
+    'FROM period where period.period_seq = vi.period_seq) AS period_name ' 
+
 END
 ELSE
 BEGIN
-	SET @sStmt = RTRIM(@sStmt) + 
-	' CONVERT(CHAR(10),' +@sStartDate + ', 101), '  +
-	' CONVERT(CHAR(10),' +@sEndDate + ', 101) ' 
+    EXEC usp_get_period_name_by_dates @sStartDate, @sEndDate, @sPeriodName OUTPUT
+    
+    SET @sStmt = RTRIM(@sStmt) + 
+    ' CONVERT(CHAR(10),' +@sStartDate + ', 101), '  +
+    ' CONVERT(CHAR(10),' +@sEndDate + ', 101), ' +
+    ' ''' +@sPeriodName + ''' '
+
 END
 
 SET @sStmt= RTRIM(@sStmt) +
 '    FROM VInvoice vi,  Customer c, Store s, VBranch vb, ' +
-'	StoreEqpt se, Content co, Service serv, Frequency f, ' +
-'	VInvoiceDet vid, VContract 	 vc' +  
+'   StoreEqpt se, Content co, Service serv, Frequency f, ' +
+'   VInvoiceDet vid, VContract   vc' +  
 '    WHERE vi.cust_id = c.cust_id ' +
 '    AND vi.store_id = s.store_id ' +
 '    AND vi.cust_id = s.cust_id ' +
@@ -401,7 +411,7 @@ SET @sStmt =N'INSERT INTO #tmpInvoice (' +
 'load_id, eqpt_temp, content_desc,' +
 'serv_desc, rate_status, eqpt_mask,' +
 'frequency_mask,  report_start, ' +
-'report_end) ' +
+'report_end, period_name) ' +
 '   SELECT DISTINCT vi.cust_id,  c.cust_report_name, ' +
 '    s.store_number, s.store_id, s.store_address, s.store_city, ' +
 '    s.state_id, s.store_co_code, s.store_name, ' +
@@ -419,20 +429,25 @@ SET @sStmt =N'INSERT INTO #tmpInvoice (' +
 '    NULL  AS frequency_mask , ' 
 
 IF @sPeriodSeq = 'T' -- TRUE
-BEGIN 	
-	SET @sStmt = RTRIM(@sStmt) + 
-	'(SELECT ' +
-	' CONVERT (CHAR(10),period.period_start_date,101)  ' +
-	'FROM period where period.period_seq = vi.period_seq) AS report_start, ' +
-	'(SELECT ' +
-	' CONVERT (CHAR(10),period.period_end_date,101)  ' +
-	'FROM period where period.period_seq = vi.period_seq) AS report_end '
+BEGIN   
+    SET @sStmt = RTRIM(@sStmt) + 
+    '(SELECT ' +
+    ' CONVERT (CHAR(10),period.period_start_date,101)  ' +
+    'FROM period where period.period_seq = vi.period_seq) AS report_start, ' +
+    '(SELECT ' +
+    ' CONVERT (CHAR(10),period.period_end_date,101)  ' +
+    'FROM period where period.period_seq = vi.period_seq) AS report_end, ' +
+    '(SELECT period_name ' +
+    'FROM period where period.period_seq = vi.period_seq) AS period_name ' 
 END
 ELSE
 BEGIN
-	SET @sStmt = RTRIM(@sStmt) + 
-	' CONVERT(CHAR(10),' +@sStartDate + ', 101), '  +
-	' CONVERT(CHAR(10),' +@sEndDate + ', 101) ' 
+    EXEC usp_get_period_name_by_dates @sStartDate, @sEndDate, @sPeriodName OUTPUT
+    
+    SET @sStmt = RTRIM(@sStmt) + 
+    ' CONVERT(CHAR(10),' +@sStartDate + ', 101), '  +
+    ' CONVERT(CHAR(10),' +@sEndDate + ', 101), ' +
+    ' ''' +@sPeriodName + ''' '
 END
 
 
@@ -440,7 +455,7 @@ END
 
 SET @sStmt = RTRIM(@sStmt) +
 '    FROM VInvoice vi, VInvoiceDet vid, Customer c, Store s, VBranch vb, ' +
-'	Service serv' +
+'   Service serv' +
 '    WHERE vi.cust_id = c.cust_id ' +
 '    AND vi.store_id = s.store_id ' +
 '    AND vi.cust_id = s.cust_id  ' +
@@ -457,8 +472,8 @@ SET @sStmt = RTRIM(@sStmt) +
 
 SET @sStmt= RTRIM(@sStmt) + RTRIM(@sFilter) +
 ' ORDER BY vi.cust_id, s.store_id, vb.vend_seq, ' +
-'	vi.account_no, vi.invoice_no, vid.eqpt_seq desc, ' +
-'	vid.serv_id '
+'   vi.account_no, vi.invoice_no, vid.eqpt_seq desc, ' +
+'   vid.serv_id '
 
 print 'STATEMENT 2 Begin --'
 print @sStmt +'----'
@@ -520,7 +535,7 @@ EXEC sp_executesql @sStmt
     CAST(' ' AS CHAR(10)) AS report_start, CAST (' ' AS CHAR(10)) AS report_end,
     CAST(' ' AS CHAR(30)) AS label_savingsPercent,
     CAST(' ' AS CHAR(40)) AS account_mask,
-					--DECIMAL(7,2) to DECIMAL(14,4)
+                    --DECIMAL(7,2) to DECIMAL(14,4)
     CAST(' ' AS CHAR(30)) AS serv_desc1, CAST(0.00 AS decimal(14,4)) AS serv_sum1,
     CAST(' ' AS CHAR(30)) AS serv_desc2, CAST(0.00 AS decimal(14,4)) AS serv_sum2,
     CAST(' ' AS CHAR(30)) AS serv_desc3, CAST(0.00 AS decimal(14,4)) AS serv_sum3,
@@ -535,7 +550,7 @@ EXEC sp_executesql @sStmt
     CAST(' ' AS CHAR(30)) AS serv_desc12, CAST(0.00 AS decimal(14,4)) AS serv_sum12,
     CAST(' ' AS CHAR(30)) AS serv_desc13, CAST(0.00 AS decimal(14,4)) AS serv_sum13,
     CAST(' ' AS CHAR(30)) AS serv_desc14, CAST(0.00 AS decimal(14,4)) AS serv_sum14,
-					--DECIMAL(7,2) to DECIMAL(14,2)
+                    --DECIMAL(7,2) to DECIMAL(14,2)
     CAST(' ' AS CHAR(30)) AS serv_desc101, CAST(0.00 AS decimal(14,2)) AS serv_sum101,
     CAST(' ' AS CHAR(30)) AS serv_desc102, CAST(0.00 AS decimal(14,2)) AS serv_sum102,
     CAST(' ' AS CHAR(30)) AS serv_desc103, CAST(0.00 AS decimal(14,2)) AS serv_sum103,
@@ -545,8 +560,8 @@ EXEC sp_executesql @sStmt
     CAST(' ' AS CHAR(30)) AS serv_desc107, CAST(0.00 AS decimal(14,2)) AS serv_sum107
     INTO #tmpInvoice 
     FROM VInvoice,  Customer, Store, VBranch, 
-	StoreEqpt, Content, Service, Frequency,
-	VInvoiceDet, VContract 	   
+    StoreEqpt, Content, Service, Frequency,
+    VInvoiceDet, VContract     
     WHERE VInvoice.cust_id = Customer.cust_id 
     AND VInvoice.store_id = Store.store_id 
     AND VInvoice.cust_id = Store.cust_id 
@@ -621,7 +636,7 @@ UNION
     CAST(' ' AS CHAR(10)) AS report_start, CAST (' ' AS CHAR(10)) AS report_end,
     CAST(' ' AS CHAR(30)) AS label_savingsPercent,
     CAST(' ' AS CHAR(40)) AS account_mask,
-					--DECIMAL(7,2) to DECIMAL(14,4)
+                    --DECIMAL(7,2) to DECIMAL(14,4)
     CAST(' ' AS CHAR(30)) AS serv_desc1, CAST(0.00 AS decimal(14,4)) AS serv_sum1,
     CAST(' ' AS CHAR(30)) AS serv_desc2, CAST(0.00 AS decimal(14,4)) AS serv_sum2,
     CAST(' ' AS CHAR(30)) AS serv_desc3, CAST(0.00 AS decimal(14,4)) AS serv_sum3,
@@ -636,7 +651,7 @@ UNION
     CAST(' ' AS CHAR(30)) AS serv_desc12, CAST(0.00 AS decimal(14,4)) AS serv_sum12,
     CAST(' ' AS CHAR(30)) AS serv_desc13, CAST(0.00 AS decimal(14,4)) AS serv_sum13,
     CAST(' ' AS CHAR(30)) AS serv_desc14, CAST(0.00 AS decimal(14,4)) AS serv_sum14,
-				--DECIMAL(7,2) to DECIMAL(14,2)
+                --DECIMAL(7,2) to DECIMAL(14,2)
     CAST(' ' AS CHAR(30)) AS serv_desc101, CAST(0.00 AS decimal(14,2)) AS serv_sum101,
     CAST(' ' AS CHAR(30)) AS serv_desc102, CAST(0.00 AS decimal(14,2)) AS serv_sum102,
     CAST(' ' AS CHAR(30)) AS serv_desc103, CAST(0.00 AS decimal(14,2)) AS serv_sum103,
@@ -645,7 +660,7 @@ UNION
     CAST(' ' AS CHAR(30)) AS serv_desc106, CAST(0.00 AS decimal(14,2)) AS serv_sum106,
     CAST(' ' AS CHAR(30)) AS serv_desc107, CAST(0.00 AS decimal(14,2)) AS serv_sum107
     FROM VInvoice, VInvoiceDet, Customer, Store, VBranch, 
-	Service
+    Service
     WHERE VInvoice.cust_id = Customer.cust_id 
     AND VInvoice.store_id = Store.store_id 
     AND VInvoice.cust_id = Store.cust_id 
@@ -661,8 +676,8 @@ UNION
     and VInvoicedet.eqpt_seq=0
     AND Store.store_status = 'A'
 ORDER BY VInvoice.cust_id, Store.store_id, VBranch.vend_seq, 
-	VInvoice.account_no, VInvoice.invoice_no, VInvoiceDet.eqpt_seq desc, 
-	VInvoiceDet.serv_id
+    VInvoice.account_no, VInvoice.invoice_no, VInvoiceDet.eqpt_seq desc, 
+    VInvoiceDet.serv_id
 */
 print '2.Loaded. Starting Filters :'+convert(char(30),getdate(),13)
 
@@ -683,17 +698,17 @@ WHERE store_id NOT IN (SELECT store_id FROM GroupStore
    AND group_seq = @nGroupSeq)
 --Period
 IF @sPeriodSeq = 'T' -- TRUE
-BEGIN 	
+BEGIN   
    DELETE FROM #tmpInvoice 
      WHERE period_seq <> @nPeriodSeq
    --Obtengo fechas del periodo
    SELECT @sPeriodStartDate = CONVERT(CHAR(10),period_start_date ,101), 
-	  @sPeriodEndDate = CONVERT (CHAR(10),period_end_date,101)
+      @sPeriodEndDate = CONVERT (CHAR(10),period_end_date,101)
    FROM period
    WHERE period_seq = @nPeriodSeq
    UPDATE #tmpInvoice
      SET report_start = @sPeriodStartDate,
-	 report_end = @sPeriodEndDate
+     report_end = @sPeriodEndDate
 END
 ELSE
 BEGIN
@@ -720,8 +735,8 @@ WHERE cust_id = @sCustId
 
 --CR-103.begin - Getting FeeValue for Savings Percent
 EXEC usp_fee_savingspercent @sCustId, 
-			    @nFeeValue = @nFeeValue OUTPUT, 
-			    @nFeeRowCount = @nFeeRowCount OUTPUT
+                @nFeeValue = @nFeeValue OUTPUT, 
+                @nFeeRowCount = @nFeeRowCount OUTPUT
 --CR-103.end
 
 --Paso 3:
@@ -729,15 +744,15 @@ EXEC usp_fee_savingspercent @sCustId,
 BEGIN
    DECLARE c_invoice CURSOR FOR
    SELECT cust_id, store_id, vend_seq, account_no, invoice_no, eqpt_seq, serv_id,
-	old_rate, rate, glm_rate
+    old_rate, rate, glm_rate
    FROM #tmpInvoice
    FOR UPDATE
 
    OPEN c_invoice
    FETCH NEXT FROM c_invoice 
    INTO @sTmpCustId, @nTmpStoreId, @nTmpVendSeq, @sTmpAccountNo, 
-	@sTmpInvoiceNo, @nTmpEqptSeq, @nTmpServId,
-	@nTmpOldRate, @nTmpRate, @nTmpGlmRate
+    @sTmpInvoiceNo, @nTmpEqptSeq, @nTmpServId,
+    @nTmpOldRate, @nTmpRate, @nTmpGlmRate
    WHILE @@FETCH_STATUS = 0
    BEGIN
       SET @nCountServUsage = 0
@@ -757,53 +772,53 @@ print 'Inv:'+@sTmpInvoiceNo +' Serv:'+cast(@nTmpServId as char(10))+
 print 'Old Rate:'+ cast(@nTmpOldRate as char(10))
 print 'Rate:'+ cast(@nTmpRate as char(10))
       DECLARE c_invoice_det CURSOR FOR
-	SELECT ISNULL(serv_usage,0.00), ISNULL(units,0.00), 
-		old_rate, rate, glm_rate, ISNULL(comment,''), service.serv_rate_contract,
-		service.serv_credit, VInvoiceDet.bill_saving_flag
- 	FROM VInvoiceDet , Service
-	WHERE cust_id = @sTmpCustId
-	AND store_id = @nTmpStoreId
-	AND vend_seq = @nTmpVendSeq
-	AND account_no = @sTmpAccountNo
-	AND invoice_no = @sTmpInvoiceno
-	AND eqpt_seq = @nTmpEqptSeq
-	AND VInvoiceDet.serv_id = @nTmpServId
-	AND old_rate = @nTmpOldRate
-	AND rate = @nTmpRate
-	AND glm_rate = @nTmpGlmRate
+    SELECT ISNULL(serv_usage,0.00), ISNULL(units,0.00), 
+        old_rate, rate, glm_rate, ISNULL(comment,''), service.serv_rate_contract,
+        service.serv_credit, VInvoiceDet.bill_saving_flag
+    FROM VInvoiceDet , Service
+    WHERE cust_id = @sTmpCustId
+    AND store_id = @nTmpStoreId
+    AND vend_seq = @nTmpVendSeq
+    AND account_no = @sTmpAccountNo
+    AND invoice_no = @sTmpInvoiceno
+    AND eqpt_seq = @nTmpEqptSeq
+    AND VInvoiceDet.serv_id = @nTmpServId
+    AND old_rate = @nTmpOldRate
+    AND rate = @nTmpRate
+    AND glm_rate = @nTmpGlmRate
         AND VInvoiceDet.serv_id = Service.serv_id
-	
+    
 --print CAST(@nTmpRate as char(1))
 
       OPEN c_invoice_det
       FETCH NEXT FROM c_invoice_det 
       INTO @nDetServUsage, @nDetUnits, @nDetOldRate, @nDetRate, @nDetGlmRate, @sDetComments, 
-	   @sDetServRateContract, @sDetServCredit, @sDetBillSavingFlag
+       @sDetServRateContract, @sDetServCredit, @sDetBillSavingFlag
       IF @@ERROR <>0
       BEGIN
-	PRINT 'Ocurrio un error'
-	SET @nError =99
-	RETURN @nError
+    PRINT 'Ocurrio un error'
+    SET @nError =99
+    RETURN @nError
       END
 
       WHILE @@FETCH_STATUS = 0
-      BEGIN	
+      BEGIN 
 
-      	   SET @nCountServUsage = @nCountServUsage  + @nDetServUsage 
+           SET @nCountServUsage = @nCountServUsage  + @nDetServUsage 
 
            IF  @sDetBillSavingFlag = 'YES'
-	      	   SET @nCountServUsage2 = @nCountServUsage2  + @nDetServUsage 
-	   ELSE
-		SET @nCountServUsage3 = @nCountServUsage3 + @nDetServUsage
+               SET @nCountServUsage2 = @nCountServUsage2  + @nDetServUsage 
+       ELSE
+        SET @nCountServUsage3 = @nCountServUsage3 + @nDetServUsage
 
-	   SET @nTotalUnits = @nTotalUnits + @nDetUnits
-	   --11.11.08  CHAR(9) -> CHAR(15)
-	   SET @sCountUnits = LTRIM(RTRIM(@sCountUnits)) + ' ' + CAST(@nDetUnits AS VARCHAR(15))  
-	   SET @sCountComments = RTRIM(@sCountComments) + ' '+ RTRIM(@sDetComments)
+       SET @nTotalUnits = @nTotalUnits + @nDetUnits
+       --11.11.08  CHAR(9) -> CHAR(15)
+       SET @sCountUnits = LTRIM(RTRIM(@sCountUnits)) + ' ' + CAST(@nDetUnits AS VARCHAR(15))  
+       SET @sCountComments = RTRIM(@sCountComments) + ' '+ RTRIM(@sDetComments)
 
-	   FETCH NEXT FROM c_invoice_det 
-	   INTO @nDetServUsage, @nDetUnits, @nDetOldRate, @nDetRate, @nDetGlmRate, @sDetComments,
-		   @sDetServRateContract, @sDetServCredit, @sDetBillSavingFlag
+       FETCH NEXT FROM c_invoice_det 
+       INTO @nDetServUsage, @nDetUnits, @nDetOldRate, @nDetRate, @nDetGlmRate, @sDetComments,
+           @sDetServRateContract, @sDetServCredit, @sDetBillSavingFlag
       END --end while
 print 'CountUnits:'+@sCountUnits+ ' @nDetRate:'+cast(@nDetRate as char(10)) + '@nDetGlmRate:'+cast(@nDetGlmRate as char(10))
 
@@ -830,90 +845,90 @@ print 'CountUnits:'+@sCountUnits+ ' @nDetRate:'+cast(@nDetRate as char(10)) + '@
 
       --05.06.03 Convierto a negativo los servicios que son Credito
       IF @sDetServCredit ='T'
-	SET @nTotalServ = @nTotalServ* (-1)
+    SET @nTotalServ = @nTotalServ* (-1)
 
       IF @sDetServRateContract ='T' 
       BEGIN
 
-	--CR-105.begin
+    --CR-105.begin
         IF @sReportTemplate = @SYS_CCR_GLMRATE_AUDIT
         BEGIN
-	   SET @nSavings = @nCountServUsage2 * (@nDetGlmRate - @nDetRate)
+       SET @nSavings = @nCountServUsage2 * (@nDetGlmRate - @nDetRate)
            SET @nCurrGlmRateSavings = @nCountServUsage2 * (@nDetOldRate - @nDetGlmRate)
         END
-	ELSE
+    ELSE
         BEGIN
-      	   SET @nSavings = @nCountServUsage2 * (@nDetOldRate - @nDetRate)   --05.12.05
-	END
-	--CR-105.end
+           SET @nSavings = @nCountServUsage2 * (@nDetOldRate - @nDetRate)   --05.12.05
+    END
+    --CR-105.end
 
-	IF @nSavings < 0 AND @sNegativeSavingsFlag = 'NO' 
-	   SET @nSavings = 0
+    IF @nSavings < 0 AND @sNegativeSavingsFlag = 'NO' 
+       SET @nSavings = 0
 
-	--CR-103.begin
-	IF @nFeeRowCount > 0 AND @nFeeValue >  0 AND @nSavings > 0	
-	BEGIN
-	   SET @nGlmSavings = @nSavings * @nFeeValue /100
-	END
+    --CR-103.begin
+    IF @nFeeRowCount > 0 AND @nFeeValue >  0 AND @nSavings > 0  
+    BEGIN
+       SET @nGlmSavings = @nSavings * @nFeeValue /100
+    END
 
-   	SELECT 	@sOpeningDate = CONVERT(CHAR(10),opening_date ,101),
-		@sExpirationDate = CONVERT(CHAR(10),expiration_date ,101)
-	FROM VContract
-		WHERE cust_id = @sTmpCustId
-		AND vend_seq = @nTmpVendSeq
-		AND store_id = @nTmpStoreId
-		AND eqpt_seq = @nTmpEqptSeq
-		AND serv_id = @nTmpServId
-	--CR-103.end
+    SELECT  @sOpeningDate = CONVERT(CHAR(10),opening_date ,101),
+        @sExpirationDate = CONVERT(CHAR(10),expiration_date ,101)
+    FROM VContract
+        WHERE cust_id = @sTmpCustId
+        AND vend_seq = @nTmpVendSeq
+        AND store_id = @nTmpStoreId
+        AND eqpt_seq = @nTmpEqptSeq
+        AND serv_id = @nTmpServId
+    --CR-103.end
 
-      	--Sum non-bill-savings
-	SET @nNonBillSavings = @nCountServUsage3 * (@nDetOldRate - @nDetRate)
+        --Sum non-bill-savings
+    SET @nNonBillSavings = @nCountServUsage3 * (@nDetOldRate - @nDetRate)
       END
       ELSE
-	SET @nSavings = 0
+    SET @nSavings = 0
 
 
 print 'CountServUsage:'+ cast(@nCountServUsage as char(10))+ 'Units:'+ cast(@nTotalUnits as char(16))+' savings:'+cast (@nSavings as char(10))
 print 'CountServUsage2:'+ cast(@nCountServUsage2 as char(10))
 print 'Total Serv:'+ cast (@nTotalServ as char(10))+ 'CountUnits:'+@sCountUnits
       UPDATE #tmpInvoice
-     	SET serv_usage = @nCountServUsage, 
-	    units = @sCountUnits, 
---	    old_rate = @nDetOldRate, 
---	    rate = @nDetRate, 
-	    comment = @sCountComments,
-	    total_units = @nTotalUnits,
-	    total_serv = @nTotalServ,	
-	    savings = @nSavings,
-	    non_bill_savings = @nNonBillSavings,
-	    --CR-103.begin
-	    glm_savings = @nGlmSavings,
-	    contract_opening_date = @sOpeningDate,
-	    contract_expiration_date = @sExpirationDate,
-	    --CR-103.end
-	    --CR-105.begin
-	    current_glmrate_savings = @nCurrGlmRateSavings,
-	    total_glmrate_serv = @nTotalGlmrateServ
-	    --CR-105.end
-	WHERE CURRENT OF c_invoice
+        SET serv_usage = @nCountServUsage, 
+        units = @sCountUnits, 
+--      old_rate = @nDetOldRate, 
+--      rate = @nDetRate, 
+        comment = @sCountComments,
+        total_units = @nTotalUnits,
+        total_serv = @nTotalServ,   
+        savings = @nSavings,
+        non_bill_savings = @nNonBillSavings,
+        --CR-103.begin
+        glm_savings = @nGlmSavings,
+        contract_opening_date = @sOpeningDate,
+        contract_expiration_date = @sExpirationDate,
+        --CR-103.end
+        --CR-105.begin
+        current_glmrate_savings = @nCurrGlmRateSavings,
+        total_glmrate_serv = @nTotalGlmrateServ
+        --CR-105.end
+    WHERE CURRENT OF c_invoice
       CLOSE c_invoice_det
       DEALLOCATE c_invoice_det
       FETCH NEXT FROM c_invoice 
       INTO @sTmpCustId, @nTmpStoreId, @nTmpVendSeq, @sTmpAccountNo, 
-	   @sTmpInvoiceNo, @nTmpEqptSeq, @nTmpServId,
-	   @nTmpOldRate, @nTmpRate, @nTmpGlmRate
+       @sTmpInvoiceNo, @nTmpEqptSeq, @nTmpServId,
+       @nTmpOldRate, @nTmpRate, @nTmpGlmRate
    END
    CLOSE c_invoice
    DEALLOCATE c_invoice
-		
+        
 END
 --Debug
 print '4.Services:'+convert(char(30),getdate(),13)
 --Paso 4
 --Totales: Suma de servicios, Taxes, Charges,Savings
 --Hasta 7 tipos de unidades de servicio que representan dinero $$ en reporte
-IF @sDetailedCharges = 'T'    	--jp 2.9.0
-BEGIN 				--jp 2.9.0
+IF @sDetailedCharges = 'T'      --jp 2.9.0
+BEGIN               --jp 2.9.0
    SELECT @nCountServices= COUNT( DISTINCT unit_type) 
    FROM #tmpInvoice a, ServUnit b
    WHERE  a.unit_type = b.serv_measure_unit
@@ -940,17 +955,17 @@ BEGIN 				--jp 2.9.0
    BEGIN
        SET @nCountServices = @nCountServices + 1
        SET @nTotalServCurrency = @nTotalServCurrency + @nUnitTypeTotal
-	--UPDATE #tmpInvoice 
-	--SET serv_desc1 = @sUnitType,
-	--    serv_sum1 = @nUnitTypeTotal
+    --UPDATE #tmpInvoice 
+    --SET serv_desc1 = @sUnitType,
+    --    serv_sum1 = @nUnitTypeTotal
 
    --print CAST(@nCountServices AS NVARCHAR(3))
       SET @sStmt1= 'UPDATE #tmpInvoice  '+
-	   	   'set serv_desc' +
-		   RTRIM(CAST(@nCountServices AS NVARCHAR(3)))  +' = '''+@sUnitType+''',' +
-		   ' serv_sum'+
-		   RTRIM(CAST(@nCountServices AS NVARCHAR(3)))  +' = '+
-		   CAST(@nUnitTypeTotal AS NVARCHAR(10))
+           'set serv_desc' +
+           RTRIM(CAST(@nCountServices AS NVARCHAR(3)))  +' = '''+@sUnitType+''',' +
+           ' serv_sum'+
+           RTRIM(CAST(@nCountServices AS NVARCHAR(3)))  +' = '+
+           CAST(@nUnitTypeTotal AS NVARCHAR(10))
       PRINT @sStmt1
       exec sp_executesql @sStmt1
       FETCH NEXT FROM c_services INTO @sUnitType, @nUnitTypeTotal
@@ -989,11 +1004,11 @@ print 'jpdebug:nUnitTypeTotal:'+CAST(@nUnitTypeTotal AS NVARCHAR(15))
 
    SET @nCountServices = @nCountServices + 1
    SET @sStmt1= 'UPDATE #tmpInvoice  '+
-		'set serv_desc' +
-		RTRIM(CAST(@nCountServices AS NVARCHAR(2)))  +' = '''+@sUnitType+''','+
-		' serv_sum'+
-		RTRIM(CAST(@nCountServices AS NVARCHAR(2)))  +' = '+
-		CAST(@nUnitTypeTotal AS NVARCHAR(15))  --nvarchar(10) to (15)
+        'set serv_desc' +
+        RTRIM(CAST(@nCountServices AS NVARCHAR(2)))  +' = '''+@sUnitType+''','+
+        ' serv_sum'+
+        RTRIM(CAST(@nCountServices AS NVARCHAR(2)))  +' = '+
+        CAST(@nUnitTypeTotal AS NVARCHAR(15))  --nvarchar(10) to (15)
   --PRINT @sStmt1
    exec sp_executesql @sStmt1
    FETCH NEXT FROM c_services2 INTO @sUnitType, @nUnitTypeTotal
@@ -1037,34 +1052,34 @@ BEGIN
    BEGIN
       IF @nFeeValue > 0
       BEGIN
-	-----ANCHOR
-	--CR-105.begin
+    -----ANCHOR
+    --CR-105.begin
         IF @sReportTemplate = @SYS_CCR_GLMRATE_AUDIT
         BEGIN
            SET @sSavingsPercentLabel = RTRIM(STR(@nFeeValue)) +'% Current Savings'
-	   SET @nTotalSavingsPercent = @nTotalCurrentGlmrateSavings * @nFeeValue /100
-	END
-	ELSE
-	BEGIN
+       SET @nTotalSavingsPercent = @nTotalCurrentGlmrateSavings * @nFeeValue /100
+    END
+    ELSE
+    BEGIN
            SET @sSavingsPercentLabel = RTRIM(STR(@nFeeValue)) +'% Savings Percent'
-	   SET @nTotalSavingsPercent = @nTotalSavings * @nFeeValue /100
-	END
+       SET @nTotalSavingsPercent = @nTotalSavings * @nFeeValue /100
+    END
       END
       ELSE
         SET @nTotalSavingsPercent = 0
    END
 
    UPDATE #tmpInvoice SET 
-	total_savingsPercent = @nTotalSavingsPercent,
-	label_savingsPercent = @sSavingsPercentLabel
+    total_savingsPercent = @nTotalSavingsPercent,
+    label_savingsPercent = @sSavingsPercentLabel
 END
 
 ELSE
 
 BEGIN 
    UPDATE #tmpInvoice SET 
-	total_savingsPercent = NULL,
-	label_savingsPercent = NULL
+    total_savingsPercent = NULL,
+    label_savingsPercent = NULL
 END
 --jp.3.0.15.begin
 --Update account_mask  in #tmpInvoice
@@ -1094,11 +1109,7 @@ BEGIN
        total_savings = @nTotalSavings,
        total_nonbillsavings = @nTotalNonBillSavings,
        total_current_glmrate_savings = @nTotalCurrentGlmrateSavings, --CR-105
-       total_glmrate_charges = @nTotalGlmCharges,  --CR-105
-       account= RTRIM(CAST(RTRIM(vend_name)  AS CHAR(30)))+ ' / '+
-	        RTRIM(CAST('Acc#'+RTRIM(ISNULL(account_mask,'')) AS CHAR(30)) ) ,
-       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
-	   'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+       total_glmrate_charges = @nTotalGlmCharges  --CR-105
 END 
 ELSE
 BEGIN
@@ -1108,22 +1119,36 @@ BEGIN
        total_savings = @nTotalSavings,
        total_nonbillsavings = @nTotalNonBillSavings,
        total_current_glmrate_savings = @nTotalCurrentGlmrateSavings,    --CR-105
-       total_glmrate_charges = @nTotalGlmCharges,  --CR-105
-       account= RTRIM(CAST(RTRIM(vend_name)  AS CHAR(30)))+ ' / '+
-	        RTRIM(CAST('Acc#'+RTRIM(ISNULL(account_mask,'')) AS CHAR(30)) ) ,
-       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
-	   'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+       total_glmrate_charges = @nTotalGlmCharges  --CR-105
 
 END
 --end jp 2.9.0
+
+IF @sPeriodAsInvoice = 'T'
+BEGIN
+   UPDATE #tmpInvoice
+   SET account= RTRIM(CAST(RTRIM(vend_name)  AS VARCHAR(30))),
+       invoice = RTRIM(CAST('Invoice #'+period_name AS CHAR(60))) +' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+       
+END
+ELSE
+BEGIN
+   UPDATE #tmpInvoice
+   SET account= RTRIM(CAST(RTRIM(vend_name)  AS CHAR(30)))+ ' / '+
+            RTRIM(CAST('Acc#'+RTRIM(ISNULL(account_mask,'')) AS CHAR(30)) ) ,
+       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+
+END
 
 --select * from #tmpInvoice
 --Servicios no asociados a equipos se asocian al ultimo equipo de la factura
 SET @nPrevEqptSeq = -1
 DECLARE c_eqpt CURSOR FOR
    SELECT cust_id, store_id, vend_seq, 
-	  account_no, invoice_no, eqpt_seq, serv_id, eqpt_mask,
-	  frequency_mask, ISNULL(content_desc,''), eqpt_temp
+      account_no, invoice_no, eqpt_seq, serv_id, eqpt_mask,
+      frequency_mask, ISNULL(content_desc,''), eqpt_temp
    FROM #tmpInvoice
    WHERE eqpt_seq>0
    ORDER BY cust_id, store_id, vend_seq, account_no, invoice_no, eqpt_seq --eqpt_mask 
@@ -1132,7 +1157,7 @@ FETCH c_eqpt
 INTO @sEqCustId, @nEqStoreId, @nEqVendSeq, @sEqAccountNo, @sEqInvoiceNo,
      @nEqEqptSeq, @nEqServId, @sEqEqptMask,
      @sEqFrequencyMask, @sEqContentDesc, @sEqEqptTemp
-	
+    
 WHILE @@FETCH_STATUS = 0
 BEGIN
 /*
@@ -1141,16 +1166,16 @@ BEGIN
    BEGIN
         UPDATE #tmpInvoice 
         SET eqpt_seq = @nPrevEqptSeq,
-	    eqpt_mask = @sPrevEqptMask,
-	    eqpt_temp = @sPrevEqptTemp,
-	    frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
-	WHERE CURRENT OF c_eqpt
+        eqpt_mask = @sPrevEqptMask,
+        eqpt_temp = @sPrevEqptTemp,
+        frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
+    WHERE CURRENT OF c_eqpt
    END
    ELSE
    BEGIN
-	UPDATE #tmpInvoice 
+    UPDATE #tmpInvoice 
         SET frequency_mask=RTRIM(CAST(@sEqFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sEqContentDesc AS CHAR(30)) 
-	WHERE CURRENT OF c_eqpt
+    WHERE CURRENT OF c_eqpt
    END
 */
 UPDATE #tmpInvoice 
@@ -1169,17 +1194,17 @@ AND serv_id =@nEqServId
    OR @sEqAccountNo <> @sPrevAccountNo
    OR @sEqInvoiceNo <> @sPrevInvoiceNo   --ojo QUE CAMBIO INVOICE
    BEGIN
-	UPDATE #tmpInvoice
-	    SET eqpt_seq = @nPrevEqptSeq,
-		eqpt_mask = @sPrevEqptMask,
-		eqpt_temp = @sPrevEqptTemp,
-		frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
-	   WHERE eqpt_seq=0
-	   AND cust_id =@sPrevCustId
-	   AND store_id = @nPrevStoreId
-	   AND vend_seq = @nPrevVendSeq
-	   AND account_no = @sPrevAccountNo
-	   AND invoice_no = @sPrevInvoiceNo
+    UPDATE #tmpInvoice
+        SET eqpt_seq = @nPrevEqptSeq,
+        eqpt_mask = @sPrevEqptMask,
+        eqpt_temp = @sPrevEqptTemp,
+        frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
+       WHERE eqpt_seq=0
+       AND cust_id =@sPrevCustId
+       AND store_id = @nPrevStoreId
+       AND vend_seq = @nPrevVendSeq
+       AND account_no = @sPrevAccountNo
+       AND invoice_no = @sPrevInvoiceNo
    END
    SET @nPrevEqptSeq = @nEqEqptSeq
    SET @sPrevEqptMask = @sEqEqptMask
@@ -1201,9 +1226,9 @@ DEALLOCATE c_eqpt
 --Actualizo la ultima factura
 UPDATE #tmpInvoice
     SET eqpt_seq = @nPrevEqptSeq,
-	eqpt_mask = @sPrevEqptMask,
-	eqpt_temp = @sPrevEqptTemp,
-	frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
+    eqpt_mask = @sPrevEqptMask,
+    eqpt_temp = @sPrevEqptTemp,
+    frequency_mask= RTRIM(CAST(@sPrevFrequencyMask AS CHAR(30)))+ ' - '+CAST(@sPrevContentDesc AS CHAR(30)) 
    WHERE eqpt_seq=0
    AND cust_id =@sPrevCustId
    AND store_id = @nPrevStoreId
@@ -1215,7 +1240,7 @@ UPDATE #tmpInvoice
 --08.08.07 STORE SAVINGS
 DECLARE c_store_savings CURSOR FOR
    SELECT cust_id, store_id, SUM(savings),
-	sum(current_glmrate_savings), sum(total_serv) --CR-105
+    sum(current_glmrate_savings), sum(total_serv) --CR-105
    FROM #tmpInvoice
    WHERE savings IS NOT NULL
    GROUP BY cust_id, store_id
@@ -1223,7 +1248,7 @@ DECLARE c_store_savings CURSOR FOR
 OPEN c_store_savings
 FETCH c_store_savings 
       INTO @sTmpCustId, @nTmpStoreId, @nTotalSavings,
-	   @nTotalCurrentGlmrateSavings, @nTotalStore   --CR-105
+       @nTotalCurrentGlmrateSavings, @nTotalStore   --CR-105
 WHILE @@FETCH_STATUS = 0
 BEGIN
    UPDATE #tmpInvoice 
@@ -1235,7 +1260,7 @@ BEGIN
 
    FETCH c_store_savings 
       INTO @sTmpCustId, @nTmpStoreId, @nTotalSavings,
-	   @nTotalCurrentGlmrateSavings, @nTotalStore   --CR-105
+       @nTotalCurrentGlmrateSavings, @nTotalStore   --CR-105
 END
 CLOSE c_store_savings
 DEALLOCATE c_store_savings
@@ -1255,7 +1280,7 @@ print '6.Frequency:'+convert(char(30),getdate(),13)
 ------------
 DECLARE c_default_frequency CURSOR FOR
    SELECT DISTINCT cust_id, store_id, vend_seq, 
-	  account_no, invoice_no, eqpt_seq
+      account_no, invoice_no, eqpt_seq
    FROM #tmpInvoice
 OPEN c_default_frequency
 FETCH c_default_frequency
@@ -1273,55 +1298,55 @@ BEGIN
    --Buscar Default Service
    SET @sContractRange = ''  --jp 2.9.0
    IF @sShowContractRange = 'T' -- jp 2.9.0 Begin
-   BEGIN 			-- jp 2.9.0
-	   SELECT @nDefaultServId = serv_id ,
-		@sOpeningDate = CONVERT(CHAR(10),opening_date ,101),
-		@sExpirationDate = CONVERT(CHAR(10),expiration_date ,101)
-		FROM VContract
-		WHERE cust_id = @sEqCustId
-		AND vend_seq = @nEqVendSeq
-		AND store_id = @nEqStoreId
-		AND eqpt_seq = @nEqEqptSeq
-		AND default_service='T'
-	
-	SET @sContractRange = 'Start-End : ' + @sOpeningDate + ' - '+ @sExpirationDate  --jp 2.9.0
+   BEGIN            -- jp 2.9.0
+       SELECT @nDefaultServId = serv_id ,
+        @sOpeningDate = CONVERT(CHAR(10),opening_date ,101),
+        @sExpirationDate = CONVERT(CHAR(10),expiration_date ,101)
+        FROM VContract
+        WHERE cust_id = @sEqCustId
+        AND vend_seq = @nEqVendSeq
+        AND store_id = @nEqStoreId
+        AND eqpt_seq = @nEqEqptSeq
+        AND default_service='T'
+    
+    SET @sContractRange = 'Start-End : ' + @sOpeningDate + ' - '+ @sExpirationDate  --jp 2.9.0
    END
    ELSE
    BEGIN
-	   SELECT @nDefaultServId = serv_id FROM VContract
-		WHERE cust_id = @sEqCustId
-		AND vend_seq = @nEqVendSeq
-		AND store_id = @nEqStoreId
-		AND eqpt_seq = @nEqEqptSeq
-		AND default_service='T'
+       SELECT @nDefaultServId = serv_id FROM VContract
+        WHERE cust_id = @sEqCustId
+        AND vend_seq = @nEqVendSeq
+        AND store_id = @nEqStoreId
+        AND eqpt_seq = @nEqEqptSeq
+        AND default_service='T'
    END --jp 2.9.0 end
-	
+    
    --If Found update
    IF @nDefaultServId > 0
    BEGIN
-	SELECT DISTINCT @sDefaultFrequency = frequency_mask FROM #tmpInvoice
-	  WHERE cust_id = @sEqCustId
-	  AND store_id = @nEqStoreId
-	  AND vend_seq = @nEqVendSeq
-	  AND account_no = @sEqAccountNo 
-	  AND invoice_no = @sEqInvoiceNo
-	  AND eqpt_seq = @nEqEqptSeq
-	  AND serv_id = @nDefaultServId
+    SELECT DISTINCT @sDefaultFrequency = frequency_mask FROM #tmpInvoice
+      WHERE cust_id = @sEqCustId
+      AND store_id = @nEqStoreId
+      AND vend_seq = @nEqVendSeq
+      AND account_no = @sEqAccountNo 
+      AND invoice_no = @sEqInvoiceNo
+      AND eqpt_seq = @nEqEqptSeq
+      AND serv_id = @nDefaultServId
 
-	IF @sDefaultFrequency<>'-'
-	BEGIN
-   	     UPDATE #tmpInvoice
-	     	SET frequency_mask = @sDefaultFrequency,
-		    contract_range = @sContractRange --jp 2.9.0
-	  	WHERE cust_id = @sEqCustId
-	  	AND store_id = @nEqStoreId
-	  	AND vend_seq = @nEqVendSeq
-	  	AND account_no = @sEqAccountNo 
-	  	AND invoice_no = @sEqInvoiceNo
-	  	AND eqpt_seq = @nEqEqptSeq
-	END 
+    IF @sDefaultFrequency<>'-'
+    BEGIN
+         UPDATE #tmpInvoice
+            SET frequency_mask = @sDefaultFrequency,
+            contract_range = @sContractRange --jp 2.9.0
+        WHERE cust_id = @sEqCustId
+        AND store_id = @nEqStoreId
+        AND vend_seq = @nEqVendSeq
+        AND account_no = @sEqAccountNo 
+        AND invoice_no = @sEqInvoiceNo
+        AND eqpt_seq = @nEqEqptSeq
+    END 
    END 
-	
+    
    PRINT 'Loop:'+ CAST (@nCount AS CHAR(2))+ 'DefServId:'+CAST(@nDefaultServId as char(2))
 
    FETCH c_default_frequency
@@ -1350,9 +1375,9 @@ FETCH c_store INTO @sStoreName
 WHILE @@FETCH_STATUS=0
 BEGIN
    IF LEN(@sStoreName)=0
-	UPDATE #tmpInvoice
-	   SET store_name = 'N/A'
-	   WHERE CURRENT OF c_store
+    UPDATE #tmpInvoice
+       SET store_name = 'N/A'
+       WHERE CURRENT OF c_store
       
    FETCH c_store INTO @sStoreName
 END
@@ -1410,7 +1435,7 @@ current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_sa
 total_glmrate_serv, total_glmrate_charges,  --CR-105
 store_total
 )
-SELECT 	
+SELECT  
 @nReportId, RTRIM(cust_report_name), CONVERT(CHAR(10),report_start), CONVERT(CHAR(10),report_end),  --0,1,2,3
 LTRIM(CAST(RTRIM(ISNULL(store_co_code,''))+ ' '+RTRIM(store_number) AS CHAR(30))) AS store_no,  --4
 CAST(RTRIM(store_address) + ' '+ RTRIM(store_city)+','+state_id  AS CHAR(60)) AS location,   --str1
@@ -1422,38 +1447,38 @@ RTRIM(invoice), --str2
 CAST(eqpt_mask AS CHAR(30)) , --10
 --RTRIM(CAST(frequency_mask AS CHAR(30)))+ ' - '+CAST(content_desc AS CHAR(30)) AS frequency_mask ,--str5
 frequency_mask , --str5
-	content_desc , --12
-	CAST(serv_desc AS CHAR(30)), serv_usage, --14,15
-	CAST(units AS CHAR(100)) , total_units, unit_type,   --16,17,18
-	old_rate, rate, 
-	glm_rate, current_rate,
-	total_serv, savings, rate_status, CAST(comment AS CHAR(60)), --19,20,21,22,23, str3
-	--CAST(units AS CHAR(20)),serv_usage, --24,5   --Release 2.8.9
-	serv_desc1, serv_sum1, serv_desc2, serv_sum2,  --25,26,27,28
-	serv_desc3, serv_sum3, serv_desc4, serv_sum4,  --29,30,31,32
-	serv_desc5, serv_sum5, serv_desc6, serv_sum6,  --33,34,35,36
-	serv_desc7, serv_sum7, serv_desc8, serv_sum8,  --37,38,39,40
-	serv_desc9, serv_sum9, serv_desc10, serv_sum10, --41,42,43,44
-	serv_desc11, serv_sum11, serv_desc12, serv_sum12, --45,46,47,48
-	serv_desc13, serv_sum13, serv_desc14, serv_sum14,  --49,50,51,52
-	serv_desc101, serv_sum101, serv_desc102, serv_sum102, --53,54,55,56
-	serv_desc103, serv_sum103, serv_desc104, serv_sum104, --57,58,59,60
-	serv_desc105, serv_sum105, serv_desc106, serv_sum106, --61,62,63,64
-	serv_desc107, serv_sum107,  --65,66
-	total_charges, total_savings, --67,68
-	cust_id, store_id, vend_seq, account_no, invoice_no, eqpt_seq, serv_id,  --69,70,71,72,73,74,75
-	total_nonbillsavings,contract_range, total_savingsPercent, --76,77, 78
-	LTRIM(RTRIM(label_savingsPercent)), store_savings,
-	store_name, account_mask, glm_savings, contract_opening_date, contract_expiration_date,
-	store_address, store_city, state_id, store_number,
-	current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
+    content_desc , --12
+    CAST(serv_desc AS CHAR(30)), serv_usage, --14,15
+    CAST(units AS CHAR(100)) , total_units, unit_type,   --16,17,18
+    old_rate, rate, 
+    glm_rate, current_rate,
+    total_serv, savings, rate_status, CAST(comment AS CHAR(60)), --19,20,21,22,23, str3
+    --CAST(units AS CHAR(20)),serv_usage, --24,5   --Release 2.8.9
+    serv_desc1, serv_sum1, serv_desc2, serv_sum2,  --25,26,27,28
+    serv_desc3, serv_sum3, serv_desc4, serv_sum4,  --29,30,31,32
+    serv_desc5, serv_sum5, serv_desc6, serv_sum6,  --33,34,35,36
+    serv_desc7, serv_sum7, serv_desc8, serv_sum8,  --37,38,39,40
+    serv_desc9, serv_sum9, serv_desc10, serv_sum10, --41,42,43,44
+    serv_desc11, serv_sum11, serv_desc12, serv_sum12, --45,46,47,48
+    serv_desc13, serv_sum13, serv_desc14, serv_sum14,  --49,50,51,52
+    serv_desc101, serv_sum101, serv_desc102, serv_sum102, --53,54,55,56
+    serv_desc103, serv_sum103, serv_desc104, serv_sum104, --57,58,59,60
+    serv_desc105, serv_sum105, serv_desc106, serv_sum106, --61,62,63,64
+    serv_desc107, serv_sum107,  --65,66
+    total_charges, total_savings, --67,68
+    cust_id, store_id, vend_seq, account_no, invoice_no, eqpt_seq, serv_id,  --69,70,71,72,73,74,75
+    total_nonbillsavings,contract_range, total_savingsPercent, --76,77, 78
+    LTRIM(RTRIM(label_savingsPercent)), store_savings,
+    store_name, account_mask, glm_savings, contract_opening_date, contract_expiration_date,
+    store_address, store_city, state_id, store_number,
+    current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
         total_glmrate_serv, total_glmrate_charges,  --CR-105
         store_total
-FROM #tmpInvoice	
+FROM #tmpInvoice    
 /*
 ORDER BY cust_id, store_id, vend_seq,
-	account_no, invoice_no, eqpt_seq desc, 
-	serv_id
+    account_no, invoice_no, eqpt_seq desc, 
+    serv_id
 */
 print '9. drop table temp table'
 truncate table #tmpInvoice
