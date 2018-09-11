@@ -227,6 +227,7 @@ store_total DECIMAL(12,2) DEFAULT 0.00,
 store_current_glmrate_savings DECIMAL(12,2) DEFAULT 0.00,
 account CHAR(80) DEFAULT ' ',
 invoice CHAR(80) DEFAULT ' ',
+invoice_mask CHAR(80) DEFAULT ' ',
 report_start SMALLDATETIME,
 report_end SMALLDATETIME,
 label_savingsPercent CHAR(30) DEFAULT ' ',
@@ -1128,8 +1129,11 @@ IF @sPeriodAsInvoice = 'T'
 BEGIN
    UPDATE #tmpInvoice
    SET account= RTRIM(CAST(RTRIM(vend_name)  AS VARCHAR(30))),
-       invoice = RTRIM(CAST('Invoice #'+period_name AS CHAR(60))) +' '+
+       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101),
+       invoice_mask = RTRIM(vend_name) + ' / '+ RTRIM(CAST('Invoice #'+period_name AS CHAR(60))) +' '+
        'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+
        
 END
 ELSE
@@ -1138,7 +1142,10 @@ BEGIN
    SET account= RTRIM(CAST(RTRIM(vend_name)  AS CHAR(30)))+ ' / '+
             RTRIM(CAST('Acc#'+RTRIM(ISNULL(account_mask,'')) AS CHAR(30)) ) ,
        invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101),
+       invoice_mask =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
        'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+
 
 END
 
@@ -1433,7 +1440,7 @@ glm_savings, contract_opening_date, contract_expiration_date,
 store_address, store_city, state_id, store_number,
 current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
 total_glmrate_serv, total_glmrate_charges,  --CR-105
-store_total
+store_total, invoice_mask
 )
 SELECT  
 @nReportId, RTRIM(cust_report_name), CONVERT(CHAR(10),report_start), CONVERT(CHAR(10),report_end),  --0,1,2,3
@@ -1473,7 +1480,7 @@ frequency_mask , --str5
     store_address, store_city, state_id, store_number,
     current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
         total_glmrate_serv, total_glmrate_charges,  --CR-105
-        store_total
+        store_total, invoice_mask
 FROM #tmpInvoice    
 /*
 ORDER BY cust_id, store_id, vend_seq,

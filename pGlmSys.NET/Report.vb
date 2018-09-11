@@ -1211,7 +1211,8 @@ ErrorHandler:
         "account_mask, glm_savings, contract_opening_date, contract_expiration_date, " & _
         "store_address, store_city, state_id, store_number, glm_rate, current_rate, " & _
         "current_glmrate_savings, total_current_glmrate_savings, store_current_glmrate_savings, " & _
-        "total_glmrate_serv, total_glmrate_charges, store_total " & " FROM RptCostCont " & " WHERE report_id = "
+        "total_glmrate_serv, total_glmrate_charges, store_total, store_fee, total_store_flat_fee, invoice_mask " & _
+        " FROM RptCostCont " & " WHERE report_id = "
 
 
     End Sub
