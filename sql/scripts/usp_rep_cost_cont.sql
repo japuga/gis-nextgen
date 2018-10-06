@@ -32,6 +32,7 @@ CREATE   PROC [dbo].[usp_rep_cost_cont]
 	@sUseGlmRate CHAR(1), --T: TRUE if Glm Rate must be used instead of Current Rate
 	@sGlmAsVendor CHAR(1),  --T: TRUE if vendors must be shown as GLM DFW Inc
 	@sReportTemplate CHAR(50),
+	@sPeriodAsInvoice CHAR(1), --T: TRUE if billing period must be shown instead of invoice number
 	@nError INT OUTPUT
 AS
 --CHANGES
@@ -218,10 +219,11 @@ SET @SYS_CCR_GLMRATE_AUDIT = 'SYS_CCR_GLMRATE_AUDIT'
     CAST(0.00 AS DECIMAL(12,2)) AS store_current_glmrate_savings,  --CR-105
     CAST(' ' AS CHAR(80)) AS account,
     CAST(' ' AS CHAR(80)) AS invoice,
+    CAST(' ' AS CHAR(80)) AS invoice_mask,
     CAST(' ' AS CHAR(10)) AS report_start, CAST (' ' AS CHAR(10)) AS report_end,
     CAST(' ' AS CHAR(30)) AS label_savingsPercent,
     CAST(' ' AS CHAR(40)) AS account_mask,
-					--DECIMAL(7,2) to DECIMAL(14,4)
+    CAST(' ' AS CHAR(200)) AS period_name,
     CAST(' ' AS CHAR(30)) AS serv_desc1, CAST(0.00 AS decimal(14,4)) AS serv_sum1,
     CAST(' ' AS CHAR(30)) AS serv_desc2, CAST(0.00 AS decimal(14,4)) AS serv_sum2,
     CAST(' ' AS CHAR(30)) AS serv_desc3, CAST(0.00 AS decimal(14,4)) AS serv_sum3,
@@ -322,10 +324,11 @@ UNION
     CAST(0.00 AS DECIMAL(12,2)) AS store_current_glmrate_savings,  --CR-105
     CAST(' ' AS CHAR(80)) AS account,
     CAST(' ' AS CHAR(80)) AS invoice,
+    CAST(' ' AS CHAR(80)) AS invoice_mask,
     CAST(' ' AS CHAR(10)) AS report_start, CAST (' ' AS CHAR(10)) AS report_end,
     CAST(' ' AS CHAR(30)) AS label_savingsPercent,
     CAST(' ' AS CHAR(40)) AS account_mask,
-					--DECIMAL(7,2) to DECIMAL(14,4)
+	CAST(' ' AS CHAR(200)) AS period_name,
     CAST(' ' AS CHAR(30)) AS serv_desc1, CAST(0.00 AS decimal(14,4)) AS serv_sum1,
     CAST(' ' AS CHAR(30)) AS serv_desc2, CAST(0.00 AS decimal(14,4)) AS serv_sum2,
     CAST(' ' AS CHAR(30)) AS serv_desc3, CAST(0.00 AS decimal(14,4)) AS serv_sum3,
@@ -840,6 +843,29 @@ BEGIN
 END
 --end jp 2.9.0
 
+IF @sPeriodAsInvoice = 'T'
+BEGIN
+   UPDATE #tmpInvoice
+   SET account= RTRIM(CAST(RTRIM(vend_name)  AS VARCHAR(30))),
+       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101),
+       invoice_mask = RTRIM(vend_name) + ' / '+ RTRIM(CAST('Invoice #'+period_name AS CHAR(60))) +' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+
+       
+END
+ELSE
+BEGIN
+   UPDATE #tmpInvoice
+   SET account= RTRIM(CAST(RTRIM(vend_name)  AS CHAR(30)))+ ' / '+
+            RTRIM(CAST('Acc#'+RTRIM(ISNULL(account_mask,'')) AS CHAR(30)) ) ,
+       invoice =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101),
+       invoice_mask =RTRIM(CAST('Invoice #'+invoice_no AS CHAR(60)))+' '+
+       'Date:' + CONVERT(CHAR(10),vinvoice_date,101)
+
+
+END
 --select * from #tmpInvoice
 --Servicios no asociados a equipos se asocian al ultimo equipo de la factura
 SET @nPrevEqptSeq = -1
@@ -1143,7 +1169,7 @@ glm_savings, contract_opening_date, contract_expiration_date,
 store_address, store_city, state_id, store_number,
 current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
 total_glmrate_serv, total_glmrate_charges,  --CR-105
-store_total, store_fee, total_store_flat_fee
+store_total, invoice_mask, store_fee, total_store_flat_fee
 )
 SELECT 	
 @nReportId, RTRIM(cust_report_name), CONVERT(CHAR(10),report_start), CONVERT(CHAR(10),report_end),  --0,1,2,3
@@ -1183,7 +1209,7 @@ frequency_mask , --str5
 	store_address, store_city, state_id, store_number,
 	current_glmrate_savings, store_current_glmrate_savings, total_current_glmrate_savings,  --CR-105
         total_glmrate_serv, total_glmrate_charges,  --CR-105
-        store_total, store_fee, total_store_flat_fee
+        store_total, invoice_mask, store_fee, total_store_flat_fee
 FROM #tmpInvoice	
 /*
 ORDER BY cust_id, store_id, vend_seq,
